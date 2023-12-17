@@ -1,7 +1,6 @@
 .background {
-    height: 100vh;
+    /* height: 100vh; */
     background: linear-gradient(to bottom, #96f2d7, #7aa5d7);
-    
 }
 
 .font {
@@ -20,7 +19,7 @@
     margin: 10px auto;
     background-color:rgba(222, 248, 252, 0.4);   
     border-radius: 15px;
-    height: 75vh;
+    /* height: 75vh; */
 }
 
 .card{
