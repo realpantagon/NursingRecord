@@ -10,13 +10,47 @@ import '@mantine/notifications/styles.css';
 import { MantineProvider, createTheme } from "@mantine/core";
 import { Notifications } from "@mantine/notifications";
 
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Route,
+  Link,
+} from "react-router-dom";
+import Loginpage from "./loginpage";
+import Home from "./home";
+import Search from "./search";
+import Patient from "./patient";
+import Ndxform from "./Form/ndx";
+
 import { PrimeReactProvider, PrimeReactContext } from "primereact/api";
 
+
 export default function App({ Component, pageProps }: AppProps) {
+  
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <Loginpage/>
+    },{
+      path: "Home",
+      element: <Home/>
+    },{
+      path: "Search",
+      element: <Search/>
+    },{
+      path: "Patient",
+      element: <Patient/>
+    },{
+      path: "Ndxform",
+      element: <Ndxform/>
+    },
+
+  ]);
+  
   return (
     <MantineProvider>
       <Notifications />
-      <Component {...pageProps} />
+      <RouterProvider router={router}/>
     </MantineProvider>
   );
 }

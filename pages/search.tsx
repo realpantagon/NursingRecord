@@ -8,7 +8,7 @@ import { Dropdown, DropdownChangeEvent } from "primereact/dropdown";
 import Link from "next/link";
 import ndxform from './Form/ndx';
 
-export default function search() {
+export default function Search() {
   const [selectedCity, setSelectedCity] = useState(null);
   const cities = [
     { name: "ชื่อ ", code: "N" },
@@ -19,7 +19,7 @@ export default function search() {
   return (
     <div className="bg-gradient-to-b from-teal-300 to-indigo-300  h-screen">
       <Navbar />
-        <h1 className={styles.font}>ค้นหาผู้ป่วย</h1>
+        <h1 className="text-center text-3xl">ค้นหาผู้ป่วย</h1>
       <div className={styles.barcontainer}>
         <div className={styles.butgroup}>
           <div className="p-inputgroup flex-1 sm:max-w-full md:max-w-xl mx-auto" >

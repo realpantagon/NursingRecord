@@ -7,7 +7,7 @@ import Link from "next/link";
 
 import ndxform from "./Form/ndx";
 
-export default function patient() {
+export default function Patient() {
   return (
     <div className="bg-gradient-to-b from-teal-300 to-indigo-300  h-screen">
       <Navbar />
