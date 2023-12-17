@@ -6,7 +6,6 @@ export default function search() {
   return (
     <div className={styles.background}>
       <Navbar />
-        {/* <div className={styles.font}>ผู้ป่วยที่ต้องดูแล</div> */}
         <h1 className={styles.font}>ผู้ป่วยที่ต้องดูแล</h1>
         <div className={styles.contentcontainer}>
         
