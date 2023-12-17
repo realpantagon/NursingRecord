@@ -2,9 +2,11 @@ import Navbar from './../component/navbar';
 import { Backdrop } from '@/styles/StyledComponent/Background/Background.styles';
 import styles from "../styles/home.module.css";
 import { Button } from 'primereact/button';
+import { Pagination } from '@mantine/core';
 
 
 export default function patient(){
+
     return (
         <div className={styles.background}>
             <Navbar/>
@@ -87,6 +89,8 @@ export default function patient(){
 
                 </div>
             </div>
+            {/* <Pagination total={data.length} value={activePage} onChange={setPage} className="py-8 flex justify-center"  color="cyan" size="md" radius="md" /> */}
+            <Pagination  className="py-8 flex justify-center" total={10} color="cyan" size="md" radius="md" />
         </div>
     )
 }
