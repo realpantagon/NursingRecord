@@ -17,7 +17,7 @@ export default function search() {
   ];
 
   return (
-    <div className={styles.container}>
+    <div className="bg-gradient-to-b from-teal-300 to-indigo-300  h-screen">
       <Navbar />
         <h1 className={styles.font}>ค้นหาผู้ป่วย</h1>
       <div className={styles.barcontainer}>
