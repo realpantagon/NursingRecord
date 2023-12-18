@@ -6,7 +6,7 @@ import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
 import { Dropdown, DropdownChangeEvent } from "primereact/dropdown";
 import Link from "next/link";
-import ndxform from './Form/ndx';
+import ndxform from './Form/form';
 
 export default function Search() {
   const [selectedCity, setSelectedCity] = useState(null);
