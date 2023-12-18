@@ -19,7 +19,9 @@ export default function Patient() {
           <div className="my-2">Bed Number:</div>
           <div className="my-2">Admit Number:</div>
           <Button className="flex items-center justify-center md:col-span-2 lg:col-span-1">
+          <Link href="../Form/ndx" className="no-underline text-white w-full">
             เพิ่มการบันทึก
+          </Link>
           </Button>
         </div>
         <div className=" h-full gap-2  mx-4 mb-8 rounded-md px-8 py-4 grid lg:grid-cols-3 md:grid-cols-2 items-center ">
