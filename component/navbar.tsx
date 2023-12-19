@@ -142,7 +142,7 @@ export default function Navbar() {
 
     return (
         <div className="card">
-            {/* <Menubar model={items} start={start} end={end} />  */}
+            {/* <Menubar model={items} start={start} end    ={end} />  */}
             <Menubar model={items} start={start} /> 
         </div>
     )

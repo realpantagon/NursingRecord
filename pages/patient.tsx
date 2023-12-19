@@ -13,7 +13,7 @@ export default function Patient() {
       <Navbar />
       <h1 className={styles.font}>ข้อมูลผู้ป่วย</h1>
       <div className={styles.contentcontainer}>
-        <div className="bg-white mx-8 my-8 rounded-md  px-8 py-4 grid md:grid-cols-2  lg:grid-cols-5 items-center">
+        <div className="bg-white mx-4 my-4 rounded-md  px-4 py-4 grid md:grid-cols-2  lg:grid-cols-5 items-center">
           <div className="my-2">ชื่อ:</div>
           <div className="my-2">วันเกิด:</div>
           <div className="my-2">Bed Number:</div>
@@ -24,7 +24,7 @@ export default function Patient() {
           </Link>
           </Button>
         </div>
-        <div className=" h-full gap-2  mx-4 mb-8 rounded-md px-8 py-4 grid lg:grid-cols-3 md:grid-cols-2 items-center ">
+        <div className=" h-full gap-2  rounded-md px-4 py-4 grid lg:grid-cols-3 md:grid-cols-2 items-center ">
           <div className="rounded-md bg-white h-full hover:bg-gray-300 hover:shadow-lg">
             <Link href="../Form/form" className="no-underline text-black">
               <div className="mx-8 py-4">
