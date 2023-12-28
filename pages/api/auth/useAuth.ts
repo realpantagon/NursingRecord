@@ -14,8 +14,9 @@ function useAuth() {
 			// Check response status and handle accordingly
 			if (response.status === 200) {
 				console.log("Login success");
-				console.log(response.data);
 
+				localStorage.setItem("accessToken", response.data.data.access_token);
+				localStorage.setItem("refreshToken", response.data.data.access_token);
 				setError(false);
 			} else {
 				setError(true);
