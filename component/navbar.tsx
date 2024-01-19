@@ -158,6 +158,7 @@ export default function Navbar() {
 			{/* <Menubar model={items} start={start} end    ={end} />  */}
 			<Menubar model={items} start={start} /> 
 			<div onClick={signOut}>Log out</div>
+			<Link href="/test">Test</Link>
 		</div>
 	);
 }

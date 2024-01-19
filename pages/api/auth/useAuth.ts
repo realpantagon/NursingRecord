@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { User } from "@/interface/user.interface";
-import { Unprotected_api } from "../api.route";
+import { UNPROTECTED_API } from "../api.route";
 import { useRouter } from "next/router";
 import axiosCustom from "@/utils/auth/axioCustom";
 function useAuth() {
@@ -10,7 +10,7 @@ function useAuth() {
 	const route = useRouter();
 	async function signIn(username: string, password: string) {
 		try {
-			const response = await axiosCustom.post(Unprotected_api.signIn, {
+			const response = await axiosCustom.post(UNPROTECTED_API.signIn, {
 				password,
 				username,
 			});
@@ -20,8 +20,10 @@ function useAuth() {
 
 				localStorage.setItem("accessToken", response.data.data.access_token);
 				localStorage.setItem("refreshToken", response.data.data.access_token);
+				axiosCustom.defaults.headers.common["X-Token"] =
+					response.data.data.access_token;
 				setError(false);
-				route.push("/test");
+				route.push("/home");
 			} else {
 				setError(true);
 				console.log("Authentication failed");
