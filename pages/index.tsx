@@ -1,4 +1,4 @@
-
+import PageLogin from './PageLogin';
 import Loginpage from './loginpage';
 
 export default function Home() {
@@ -6,7 +6,8 @@ export default function Home() {
 
     return (
         <div>
-            <Loginpage></Loginpage>
+            {/* <Loginpage></Loginpage> */}
+            <PageLogin/>
         </div>
     );
 }
