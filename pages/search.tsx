@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import styles from "../styles/home.module.css";
 import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
 import { Dropdown } from "primereact/dropdown";
@@ -29,7 +28,7 @@ export default function Search() {
               placeholder="ค้นหาจาก"
               className="w-8"
             ></Dropdown>
-            <InputText placeholder="Keyword" className={styles.input} />
+            <InputText placeholder="Keyword"  />
             <Link href="patient">
               <Button label="ค้นหา" />
             </Link>
