@@ -1,18 +1,15 @@
-import Navbar from "./../component/navbar";
-import { Backdrop } from "@/styles/StyledComponent/Background/Background.styles";
-import styles from "../styles/home.module.css";
 import { Button } from "primereact/button";
 import { Pagination } from "@mantine/core";
 import Link from "next/link";
+import Appbar from "@/component/Appbar";
 
-import ndxform from "./Form/form";
 
 export default function Patient() {
   return (
-    <div className="bg-gradient-to-b from-teal-300 to-indigo-300  h-screen">
-      <Navbar />
-      <h1 className={styles.font}>ข้อมูลผู้ป่วย</h1>
-      <div className={styles.contentcontainer}>
+    <div className="bg-stone-100  h-screen">
+      <Appbar/>
+      <h1 className="text-center text-3xl">ข้อมูลผู้ป่วย</h1>
+      <div className="">
         <div className="bg-white mx-4 my-4 rounded-md  px-4 py-4 grid md:grid-cols-2  lg:grid-cols-5 items-center">
           <div className="my-2">ชื่อ:</div>
           <div className="my-2">วันเกิด:</div>
@@ -29,42 +26,11 @@ export default function Patient() {
             <Link href="../Form/form" className="no-underline text-black">
               <div className="mx-8 py-4">
                 <div className="">เวลาบันทึก:</div>
-                <div className="">NDX:</div>
+                <div className="">บันทึกโดย:</div>
               </div>
             </Link>
           </div>
-          <div className="rounded-md bg-white h-full hover:bg-gray-300 hover:shadow-lg">
-            <Link href="../Form/form" className="no-underline text-black">
-              <div className="mx-8 py-4">
-                <div className="">เวลาบันทึก:</div>
-                <div className="">NDX:</div>
-              </div>
-            </Link>
-          </div>
-          <div className="rounded-md bg-white h-full hover:bg-gray-300 hover:shadow-lg">
-            <Link href="../Form/form" className="no-underline text-black">
-              <div className="mx-8 py-4">
-                <div className="">เวลาบันทึก:</div>
-                <div className="">NDX:</div>
-              </div>
-            </Link>
-          </div>
-          <div className="rounded-md bg-white h-full hover:bg-gray-300 hover:shadow-lg">
-            <Link href="../Form/form" className="no-underline text-black">
-              <div className="mx-8 py-4">
-                <div className="">เวลาบันทึก:</div>
-                <div className="">NDX:</div>
-              </div>
-            </Link>
-          </div>
-          <div className="rounded-md bg-white h-full hover:bg-gray-300 hover:shadow-lg">
-            <Link href="../Form/form" className="no-underline text-black">
-              <div className="mx-8 py-4">
-                <div className="">เวลาบันทึก:</div>
-                <div className="">NDX:</div>
-              </div>
-            </Link>
-          </div>
+        
         </div>
       </div>
       {/* <Pagination total={data.length} value={activePage} onChange={setPage} className="py-8 flex justify-center"  color="cyan" size="md" radius="md" /> */}
