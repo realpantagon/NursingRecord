@@ -13,7 +13,7 @@ export default function Search() {
       <div >
         <div>
           <Searchbar/>
-          <div >
+          <div className="xl:mx-32">
             <div className=" h-full gap-2 rounded-md px-4 py-4 grid lg:grid-cols-3 md:grid-cols-2 items-center ">
               <div className="rounded-md bg-white h-full hover:bg-gray-300 hover:shadow-lg">
                 <Link href="../patient" className="no-underline text-black">
