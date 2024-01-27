@@ -1,6 +1,3 @@
-import style from "../../styles/ndx.module.css";
-import Navbar from "../../component/navbar";
-import styles from "../../styles/home.module.css";
 import { TabView, TabPanel } from "primereact/tabview";
 import NDX from "./ndx";
 import Support from "./support";
@@ -8,6 +5,8 @@ import Activities from "./Activities";
 import Evaluate from "./Evaluate";
 import { Button } from 'primereact/button';
 import Link from "next/link";
+import Appbar from "@/component/Appbar";
+
 
 interface ndx {
   name: string;
@@ -18,8 +17,8 @@ export default function form() {
 
 
   return (
-    <div className="bg-gradient-to-b from-teal-300 to-indigo-300  h-full">
-      <Navbar />
+    <div className="bg-stone-100">
+      <Appbar/>
       <h1 className="text-center text-3xl m-0">กรอกข้อมูล</h1>
       {/* <div className={styles.contentcontainer}> */}
       <div className="flex flex-col sm:mx-0 md:mx-8 pb-96">
