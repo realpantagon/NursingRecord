@@ -17,7 +17,7 @@ export default function Patient() {
           <div className="flex flex-row justify-between col-span-2">
             <Button className="mx-auto w-5/12 bg-violet-500">
               <Link
-                href="../Form/form"
+                href="../Form/FocusProblem/FocusProblemForm"
                 className="no-underline text-white w-full "
               >
                 เพิ่ม Focus Problem
