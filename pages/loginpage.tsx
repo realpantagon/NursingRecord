@@ -1,5 +1,4 @@
 import Image from "next/image";
-import PNM from "../public/npm.png";
 import cpe from "../public/logo cpe.jpeg";
 import ent from "../public/ent logo.jpeg";
 import React, { useRef, useState } from "react";
@@ -11,7 +10,6 @@ import { notifications } from "@mantine/notifications";
 
 import { InputText } from "primereact/inputtext";
 import { Password } from "primereact/password";
-import home from "./home";
 
 import navbar from "@/component/navbar";
 import useAuth from "./api/auth/useAuth";
@@ -33,13 +31,11 @@ export default function Loginpage() {
 			<div className={styles.boxsideboxcontainer}>
 				<div className={styles.sidebox}>
 					<div className={styles.img}>
-						{/* <Image src={PNM} alt='Logo' width={50}/> */}
 						<div className={styles.text2}>
 							<div>
 								<Image src={cpe} alt="Logo" width={100} />
 								<Image src={ent} alt="Logo" width={100} />
 							</div>
-							{/* <span className={styles.engtext}>Login</span> */}
 							<span>มหาวิทยาลัยเชียใหม่ คณะวิศวกรรมศาสตร์</span>
 							<span>ภาควิชาคอมพิวเตอร์</span>
 						</div>
@@ -66,6 +62,7 @@ export default function Loginpage() {
 					<div className={styles.password}>
 						<div className="card flex justify-content-center">
 							<span className="p-float-label">
+								
 								<Password
 									value={password}
 									onChange={(e) => setPassword(e.target.value)}
