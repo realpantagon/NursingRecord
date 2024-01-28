@@ -4,7 +4,7 @@ import { useQuerySearchPatients } from "./api/patients/patientService";
 import { Patient } from "./api/patients/type";
 const HomePage: React.FC = () => {
 	const body = {
-		an: "AN-30",
+		an: "",
 		bed_number: "",
 		name: "",
 	};
@@ -14,6 +14,7 @@ const HomePage: React.FC = () => {
 	if (fetchedPatients.isLoading) {
 		return <div>Loading...</div>;
 	}
+	console.log(fetchedPatients);
 
 	return (
 		<div>
