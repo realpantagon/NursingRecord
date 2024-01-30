@@ -68,7 +68,7 @@ export default function FocusProblemForm() {
             <label className="mb-4 text-xl font-bold">ข้อมูลสนับสนุน</label>
             <textarea
               ref={supportTextareaRef}
-              className="rounded-xl active:outline-none resize-vertical max-h-96"
+              className="rounded-xl active:outline-none resize-none max-h-96 overflow-hidden"
               rows={1}
               value={support}
               onChange={supportChange}
@@ -79,10 +79,11 @@ export default function FocusProblemForm() {
             <label className="mb-4 text-xl font-bold">กิจกรรมพยาบาล</label>
             <textarea
               ref={activitiesTextareaRef}
-              className="rounded-xl active:outline-none resize-vertical max-h-96"
+              className="rounded-xl active:outline-none resize-none max-h-96 overflow-hidden"
               rows={1}
               value={activities}
               onChange={activitiesChange}
+              
             />
           </div>
 
@@ -90,7 +91,8 @@ export default function FocusProblemForm() {
             <label className="mb-4 text-xl font-bold">การประเมินผล</label>
             <textarea
               ref={evaluateTextareaRef}
-              className="rounded-xl active:outline-none resize-vertical max-h-96"
+              className="rounded-xl active:outline-none resize-none max-h-96 overflow-hidden"
+  rows={1}
               rows={1}
               value={evaluate}
               onChange={evaluateChange}
