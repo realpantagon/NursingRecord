@@ -92,7 +92,6 @@ export default function FocusProblemForm() {
             <textarea
               ref={evaluateTextareaRef}
               className="rounded-xl active:outline-none resize-none max-h-96 overflow-hidden"
-  rows={1}
               rows={1}
               value={evaluate}
               onChange={evaluateChange}
