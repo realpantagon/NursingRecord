@@ -13,14 +13,12 @@ interface ndx {
   key: Number;
 }
 
-export default function form() {
+export default function Form() {
 
 
   return (
-    <div className="bg-stone-100">
-      <Appbar/>
+    <div className="bg-stone-100 w-full">
       <h1 className="text-center text-3xl m-0">กรอกข้อมูล</h1>
-      {/* <div className={styles.contentcontainer}> */}
       <div className="flex flex-col sm:mx-0 md:mx-8 pb-96">
         <div className="bg-white mx-4 my-4 rounded-md px-4 py-4 grid md:grid-cols-2  lg:grid-cols-5 items-center">
           <div className="my-2">ชื่อ:</div>
@@ -30,7 +28,7 @@ export default function form() {
           <div className="my-2">เวลาบันทึก:</div>
         </div>
         <div className="rounded-lg pt-4 bg-white">
-        {/* <TabView >
+        <TabView >
           <TabPanel header="ข้อวินิจฉัย" className="mx-auto text-sm">
             <NDX/>
           </TabPanel>
@@ -46,7 +44,7 @@ export default function form() {
             <Button className="flex w-full md:w-2/12 mx-8 " label="Submit" icon="pi pi-check" iconPos="right" />
             </div>
           </TabPanel>
-        </TabView> */}
+        </TabView>
         </div>
       </div>
     </div>

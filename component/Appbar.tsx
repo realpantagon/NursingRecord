@@ -50,7 +50,6 @@ export default function Appbar() {
         </ul>
       </div>
     </div>
-    
   </nav>
   )
 }
