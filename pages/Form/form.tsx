@@ -30,7 +30,7 @@ export default function form() {
           <div className="my-2">เวลาบันทึก:</div>
         </div>
         <div className="rounded-lg pt-4 bg-white">
-        <TabView >
+        {/* <TabView >
           <TabPanel header="ข้อวินิจฉัย" className="mx-auto text-sm">
             <NDX/>
           </TabPanel>
@@ -43,12 +43,10 @@ export default function form() {
           <TabPanel header="การประเมินผล" className="mx-auto text-sm">
             <Evaluate/>
             <div className="flex flex-row-reverse my-12">
-              {/* <Link href="../patient"> */}
             <Button className="flex w-full md:w-2/12 mx-8 " label="Submit" icon="pi pi-check" iconPos="right" />
-            {/* </Link> */}
             </div>
           </TabPanel>
-        </TabView>
+        </TabView> */}
         </div>
       </div>
     </div>
