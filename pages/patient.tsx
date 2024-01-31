@@ -69,7 +69,6 @@ export default function Patient() {
       <div className="flex flex-col">
         <Appbar />
 
-
         <button
           onClick={toggleSidebar}
           data-drawer-target="separator-sidebar"
@@ -97,32 +96,77 @@ export default function Patient() {
         <aside
           id="separator-sidebar"
           className={`fixed top-0 -left-10 z-1 w-96 h-screen transition-transform ${
-            isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
+            isSidebarOpen ? "translate-x-0" : "-translate-x-full"
           } sm:translate-x-0`}
           aria-label="Sidebar"
         >
-          <div className="h-full  py-4  bg-gray-50 dark:bg-gray-800">
-            <ul className=" mt-24 list-none mr-4">
+          <div className="h-full pt-16 bg-gray-50 dark:bg-gray-800">
+            <ul className="  list-none mr-2">
+
               <li>
-                <div className="bg-black">Hi</div>
+                <Button className="mx-auto w-full bg-violet-500">
+                  <Link
+                    href="../Form/FocusProblem/FocusProblemForm"
+                    className="no-underline text-white w-full "
+                  >
+                    เพิ่ม Focus Problem
+                  </Link>
+                </Button>
               </li>
+              <li className="mt-4">
+                <Button className="mx-auto w-full bg-blue-600">
+                  <Link
+                    href="../Form/form"
+                    className="no-underline text-white w-full "
+                  >
+                    เพิ่มแบบบันทึกทางการพยาบาล
+                  </Link>
+                </Button>
+              </li>
+              <hr />
+              <div className="text-sm ml-4">การบันทึกล่าสุด</div>
               <li>
-                <a
-                  href="#"
-                  className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
-                >
-                  <span className="flex-1 ms-3 whitespace-nowrap">Kanban</span>
-                </a>
+                <div className="rounded-md bg-stone-100 h-full hover:bg-gray-300 hover:shadow-lg my-4">
+                  <Link href="../Form/form" className="no-underline text-black">
+                    <div className="mx-8 py-4">
+                      <div className="">เวลาบันทึก:</div>
+                      <div className="">บันทึกโดย:</div>
+                    </div>
+                  </Link>
+                </div>
               </li>
+              <hr />
             </ul>
-            <ul className="pt-4 mt-4 space-y-2 font-medium border-t border-gray-200 dark:border-gray-700 list-none ">
+            <ul className="pt-4 mt-4 space-y-2 font-medium border-t border-gray-200 dark:border-gray-700 list-none mr-2">
               <li>
-                <a
-                  href="#"
-                  className="flex items-center p-2 text-gray-900 transition duration-75 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group"
-                >
-                  <span className="ms-3">Upgrade to Pro</span>
-                </a>
+                <div className="rounded-md bg-stone-100 h-full hover:bg-gray-300 hover:shadow-lg my-4">
+                  <Link href="../Form/form" className="no-underline text-black">
+                    <div className="mx-8 py-4">
+                      <div className="">เวลาบันทึก:</div>
+                      <div className="">บันทึกโดย:</div>
+                    </div>
+                  </Link>
+                </div>
+              </li>
+              <li>
+                <div className="rounded-md bg-stone-100 h-full hover:bg-gray-300 hover:shadow-lg my-4">
+                  <Link href="../Form/form" className="no-underline text-black">
+                    <div className="mx-8 py-4">
+                      <div className="">เวลาบันทึก:</div>
+                      <div className="">บันทึกโดย:</div>
+                    </div>
+                  </Link>
+                </div>
+              </li>
+              <li>
+                <div className="rounded-md bg-stone-100 h-full hover:bg-gray-300 hover:shadow-lg my-4">
+                  <Link href="../Form/form" className="no-underline text-black">
+                    <div className="mx-8 py-4">
+                      <div className="">เวลาบันทึก:</div>
+                      <div className="">บันทึกโดย:</div>
+                    </div>
+                  </Link>
+                </div>
               </li>
             </ul>
           </div>
