@@ -39,7 +39,7 @@ export default function Appbar() {
             <a href="/home" className="block py-2 px-3 text-black font-bold rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent no-underline">ผู้ป่วยที่ต้องดูแล</a>
           </li>
           <li>
-            <a href="/search" className="block py-2 px-3 text-black font-bold rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent no-underline">แก้ไขแบบบันทึก</a>
+            <a href="/Admin/edittemplate" className="block py-2 px-3 text-black font-bold rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent no-underline">แก้ไขแบบบันทึก</a>
           </li>
           <li>
             <a href="/test" className="block py-2 px-3 text-black font-bold rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent no-underline">Test</a>

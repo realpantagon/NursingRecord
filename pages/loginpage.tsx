@@ -3,9 +3,8 @@ import cpecmu from "../public/cpecmu.png";
 
 import React, { useRef, useState } from "react";
 import Link from "next/link";
-
 import useAuth from "./api/auth/useAuth";
-import { log } from "console";
+
 
 export default function Loginpage() {
   const [password, setPassword] = useState("");

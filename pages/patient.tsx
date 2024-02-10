@@ -39,11 +39,12 @@ export default function Patient() {
             ></path>
           </svg>
         </button>
+        <div className="flex">
         <aside
           id="separator-sidebar"
-          className={`relative top-0 -left-10 z-1 xl:w-3/12 sm:w-5/12 md:4/12 h-screen transition-transform ${
+          className={`relative top-0  z-1 xl:w-3/12  w-full h-screen transition-transform ${
             isSidebarOpen ? "translate-x-0" : "-translate-x-full"
-          } sm:translate-x-0`}
+          } sm:translate-x-0 xl:block`}
           aria-label="Sidebar"
         >
           <div className="h-full pt-16  bg-gray-50 dark:bg-gray-800">
@@ -116,7 +117,10 @@ export default function Patient() {
             </ul>
           </div>
         </aside>
-          {/* <Form/> */}
+        <div >
+          hi
+        </div>
+        </div>
       </div>
     </div>
   );

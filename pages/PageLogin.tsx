@@ -1,9 +1,7 @@
 import saraburi from "../public/nurse2.jpeg";
 import Image from "next/image";
 import React, { useState } from "react";
-
 import useAuth from "./api/auth/useAuth";
-import { log } from "console";
 
 export default function PageLogin() {
   const [password, setPassword] = useState("");
@@ -11,9 +9,7 @@ export default function PageLogin() {
 
   const { signIn, error } = useAuth();
 
-  const handleLogin = async (e: any) => {
-    e.preventDefault();
-
+  const handleLogin = async () => {
     await signIn(username, password);
   };
 
@@ -51,8 +47,8 @@ export default function PageLogin() {
             />
           </div>
           <button className="w-full my-5 py-2 bg-emerald-500 shadow-lg shadow-emerald-100 hover:shadow-emerald-300 text-white font-semibold rounded-xl border-none"
-          onClick={(e) => {
-            handleLogin(e);
+          onClick={() => {
+            handleLogin();
           }}
           >
             Sign In
