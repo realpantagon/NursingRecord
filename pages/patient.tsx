@@ -50,24 +50,25 @@ export default function Patient() {
           <div className="h-full pt-16  bg-gray-50 dark:bg-gray-800">
             <ul className="  list-none mx-4">
               <li>
-                <Button className="mx-auto w-full bg-violet-500">
+                {/* <Button className="mx-auto w-full bg-violet-500"> */}
                   <Link
                     href="../Form/FocusProblem/FocusProblemForm"
                     className="no-underline text-white w-full "
                   >
+                <div className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-4 text-center me-2 mb-2 w-full">
                     เพิ่ม Focus Problem
+                </div>
                   </Link>
-                </Button>
               </li>
               <li className="mt-4">
-                <Button className="mx-auto w-full bg-blue-600">
                   <Link
                     href="../Form/form"
                     className="no-underline text-white w-full "
                   >
+                <div className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-4 text-center me-2 mb-2 w-full">
                     เพิ่มแบบบันทึกทางการพยาบาล
+                </div>
                   </Link>
-                </Button>
               </li>
               <hr />
               <div className="text-sm ml-4">การบันทึกล่าสุด</div>
