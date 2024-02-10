@@ -34,7 +34,9 @@ export default function Template() {
           <div className="card">
             <Accordion multiple activeIndex={0}>
               <AccordionTab header="ข้อวินิจฉัยทางพยาบาล">
-                <p className="m-0">1</p>
+                <p className="m-0">
+                    <textarea></textarea>
+                </p>
               </AccordionTab>
               <AccordionTab header="ข้อวินิจฉัย">
                 <p className="m-0">2</p>
