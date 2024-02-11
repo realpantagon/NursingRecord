@@ -77,7 +77,7 @@ const ConfirmFocus: React.FC<ConfirmFocusProps> = ({ support, activities, evalua
             <Toast ref={toast} position="bottom-right"/>
             <ConfirmDialog />
             <div className="card flex justify-between">
-                <Button onClick={confirmSave} icon="pi pi-save" label="บันทึกแบบฟอร์ม" className="p-button-success mr-2" />
+                <Button onClick={confirmSave} icon="pi pi-save" label="บันทึกแบบฟอร์ม" className="p-button-info mr-2" />
                 <Button onClick={confirmClear} icon="pi pi-trash" label="ล้างแบบฟอร์ม" className="p-button-danger" />
             </div>
         </>
