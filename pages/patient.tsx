@@ -42,7 +42,7 @@ export default function Patient() {
         <div className="flex">
         <aside
           id="separator-sidebar"
-          className={`relative top-0  z-1 xl:w-3/12  w-full h-screen transition-transform ${
+          className={`relative xl:w-3/12 -left-12 w-full h-screen transition-transform ${
             isSidebarOpen ? "translate-x-0" : "-translate-x-full"
           } sm:translate-x-0 xl:block`}
           aria-label="Sidebar"
@@ -118,7 +118,7 @@ export default function Patient() {
             </ul>
           </div>
         </aside>
-        <div >
+        <div className="">
           hi
         </div>
         </div>
