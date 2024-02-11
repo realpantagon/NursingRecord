@@ -1,5 +1,6 @@
 import Image from "next/image";
 import cpecmu from "../public/cpecmu.png";
+import hospital from "../public/saraburi.jpg";
 
 import React, { useRef, useState } from "react";
 import Link from "next/link";
@@ -23,12 +24,13 @@ export default function Loginpage() {
         <div className="hidden xl:flex bg-white xl:w-96 justify-center items-center flex-col rounded-2xl shadow-2xl p-8">
           <div className="flex flex-col justify-center items-center space-y-4">
             <Image src={cpecmu} alt="Logo" width={250} />
-            <h1>โรงพยาบาลสระบุรี</h1>
             <h1 className="text-center">
               คณะวิศวกรรมศาสตร์ มหาวิทยาลัยเชียงใหม่
               <br /> {/* Line break element */}
               <span>ภาควิชาวิศวกรรมคอมพิวเตอร์</span>
             </h1>
+            {/* <Image src={hospital} alt="Logo" width={100} /> */}
+            <h1>โรงพยาบาลสระบุรี</h1>
 
           </div>
         </div>

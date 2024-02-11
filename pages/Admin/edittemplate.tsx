@@ -1,7 +1,9 @@
 import Appbar from "@/component/Appbar";
-import React, { useState } from "react";
+import React, { useState,useRef } from "react";
 import { Accordion, AccordionTab } from "primereact/accordion";
 import { Dropdown, DropdownChangeEvent } from "primereact/dropdown";
+import { ConfirmDialog, confirmDialog } from 'primereact/confirmdialog';
+import { Toast } from 'primereact/toast';
 import { log } from "console";
 
 interface Disease {
@@ -16,7 +18,39 @@ export default function Template() {
   const [selectDisease, setSelectDisease] = useState<Disease | null>(null);
 
   console.log(selectDisease);
+
+  const confirmSave = () => {
+    confirmDialog({
+        message: 'อัปเดทTemplateของบันทึก',
+        header: 'Confirmation',
+        icon: 'pi pi-check-square',
+        accept:()=>{
+            toast.current?.show({
+                severity: 'success',
+                summary: 'Success',
+                detail: 'อัปเดทTemplateสำเร็จ',
+                life: 1000,
+            });
+        },
+        reject,
+        defaultFocus: 'accept',
+        position:'center'
+    });
+    
+};
+
+const reject = () => {
+  toast.current?.show({
+      severity: 'warn',
+      summary: 'Rejected',
+      detail: 'ยกเลิกการเปลี่ยนแปลง',
+      life: 1000,
+      
+  });
+};
+const toast = useRef<Toast>(null);
   return (
+    
     <div>
       <Appbar />
       <div className="xl:w-5/12 xl:mx-auto mx-4 my-8 ">
@@ -49,7 +83,9 @@ export default function Template() {
               </AccordionTab>
             </Accordion>
           </div>
-          <div className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 my-8">
+          <Toast ref={toast} position="bottom-right"/>
+          <ConfirmDialog />
+          <div onClick={confirmSave} className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 my-8">
             บันทึก
           </div>
         </div>

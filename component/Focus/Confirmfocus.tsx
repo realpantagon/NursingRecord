@@ -11,9 +11,6 @@ interface ConfirmFocusProps {
     clearForm: () => void;
 }   
 
-interface ClearFocusProps {
-    clearForm: () => void;
-}
 
 const ConfirmFocus: React.FC<ConfirmFocusProps> = ({ support, activities, evaluate, clearForm }) => {
     const toast = useRef<Toast>(null);
