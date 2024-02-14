@@ -3,6 +3,7 @@ import Appbar from "@/component/Appbar";
 import ConfirmFocus from "@/component/Focus/Confirmfocus";
 import Support from './../support';
 import { Accordion, AccordionTab } from 'primereact/accordion';
+import PatientData from "@/component/PatientData/PatientData";
 
 export default function FocusProblemForm() {
   const [support, setSupport] = useState("");
@@ -54,20 +55,14 @@ export default function FocusProblemForm() {
     setEvaluate("");
   };
 
-  
+
 
   return (
     <div className="bg-stone-100 h-full">
       <Appbar />
       <h1 className="text-center text-3xl m-0">กรอกข้อมูล Focus Problem</h1>
       <div className="flex flex-col sm:mx-0 md:mx-8 pb-96 xl:mx-32">
-        <div className="bg-white mx-4 my-4 rounded-md px-4 py-4 grid md:grid-cols-2  lg:grid-cols-5 items-center shadow-md">
-          <div className="my-2">ชื่อ:</div>
-          <div className="my-2">วันเกิด:</div>
-          <div className="my-2">Bed Number:</div>
-          <div className="my-2">Admit Number:</div>
-          <div className="my-2">เวลาบันทึก:</div>
-        </div>
+        <PatientData/>
         <div className="card mx-4 xl:mx-80">
             <Accordion multiple activeIndex={[0]}>
                 <AccordionTab header="ข้อวินิจฉัย">

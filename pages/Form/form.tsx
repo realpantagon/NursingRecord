@@ -6,6 +6,7 @@ import Evaluate from "./Evaluate";
 import { Button } from 'primereact/button';
 import Link from "next/link";
 import Appbar from "@/component/Appbar";
+import PatientData from "@/component/PatientData/PatientData";
 
 
 interface ndx {
@@ -20,13 +21,7 @@ export default function Form() {
     <div className="bg-stone-100 w-full">
       <h1 className="text-center text-3xl m-0">กรอกข้อมูล</h1>
       <div className="flex flex-col sm:mx-0 md:mx-8 pb-96">
-        <div className="bg-white mx-4 my-4 rounded-md px-4 py-4 grid md:grid-cols-2  lg:grid-cols-5 items-center">
-          <div className="my-2">ชื่อ:</div>
-          <div className="my-2">วันเกิด:</div>
-          <div className="my-2">Bed Number:</div>
-          <div className="my-2">Admit Number:</div>
-          <div className="my-2">เวลาบันทึก:</div>
-        </div>
+        <PatientData/>
         <div className="rounded-lg pt-4 bg-white">
         <TabView >
           <TabPanel header="ข้อวินิจฉัย" className="mx-auto text-sm">
