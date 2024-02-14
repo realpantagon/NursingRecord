@@ -53,6 +53,7 @@ const toast = useRef<Toast>(null);
     
     <div className="bg-stone-100 min-h-screen">
       <Appbar />
+      <h1 className="text-center text-3xl">แก้ไขแแบบบันทึกทางพยาบาล</h1>
       <div className="xl:w-5/12 xl:mx-auto mx-4 my-8 ">
         <div className="card flex justify-content-center">
           <Dropdown

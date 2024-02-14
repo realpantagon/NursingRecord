@@ -19,6 +19,12 @@ export default function Search() {
               <PatientCard/>
               <PatientCard/>
               <PatientCard/>
+              <PatientCard/>
+              <PatientCard/>
+              <PatientCard/>
+              <PatientCard/>
+              <PatientCard/>
+
             </div>
           </div>
         </div>

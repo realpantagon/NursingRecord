@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 function PatientHistory() {
   return (
-    <div className="rounded-md bg-stone-100 h-full hover:bg-gray-300 hover:shadow-lg my-4 shadow-md">
+    <div className="rounded-md bg-stone-100  hover:bg-gray-300 hover:shadow-lg my-4 shadow-md mx-4">
                   <Link href="../Form/form" className="no-underline text-black">
                     <div className="mx-8 py-4">
                       <div className="">เวลาบันทึก:</div>
