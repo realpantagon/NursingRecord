@@ -2,6 +2,7 @@ import React, { ChangeEvent, useEffect, useRef, useState } from "react";
 import Appbar from "@/component/Appbar";
 import ConfirmFocus from "@/component/Focus/Confirmfocus";
 import Support from './../support';
+import { Accordion, AccordionTab } from 'primereact/accordion';
 
 export default function FocusProblemForm() {
   const [support, setSupport] = useState("");
@@ -53,6 +54,8 @@ export default function FocusProblemForm() {
     setEvaluate("");
   };
 
+  
+
   return (
     <div className="bg-stone-100 h-full">
       <Appbar />
@@ -65,40 +68,36 @@ export default function FocusProblemForm() {
           <div className="my-2">Admit Number:</div>
           <div className="my-2">เวลาบันทึก:</div>
         </div>
-        <div className="flex flex-col justify-center mx-4 xl:mx-80 bg-white rounded-2xl">
-          <div className="my-4 xl:mx-8 px-4 py-8 bg-teal-100 flex flex-col rounded-xl">
-            <label className="mb-4 text-xl font-bold">ข้อมูลสนับสนุน</label>
-            <textarea
+        <div className="card mx-4 xl:mx-80">
+            <Accordion multiple activeIndex={[0]}>
+                <AccordionTab header="ข้อวินิจฉัย">
+                <textarea
               ref={supportTextareaRef}
-              className="rounded-xl active:outline-none resize-none max-h-96 overflow-hidden"
+              className="rounded-xl active:outline-none resize-none max-h-96 overflow-hidden w-full"
               rows={1}
               value={support}
               onChange={supportChange}
             />
-          </div>
-
-          <div className="my-4 xl:mx-8 px-4 py-8 bg-indigo-100 flex flex-col rounded-xl">
-            <label className="mb-4 text-xl font-bold">กิจกรรมพยาบาล</label>
-            <textarea
+                </AccordionTab>
+                <AccordionTab header="กิจกรรมพยาบาล">
+                <textarea
               ref={activitiesTextareaRef}
-              className="rounded-xl active:outline-none resize-none max-h-96 overflow-hidden"
+              className="rounded-xl active:outline-none resize-none max-h-96 overflow-hidden w-full"
               rows={1}
               value={activities}
               onChange={activitiesChange}
-              
             />
-          </div>
-
-          <div className="my-4 xl:mx-8 px-4 py-8 bg-purple-100 flex flex-col rounded-xl">
-            <label className="mb-4 text-xl font-bold">การประเมินผล</label>
-            <textarea
+                </AccordionTab>
+                <AccordionTab header="การประเมินผล">
+                <textarea
               ref={evaluateTextareaRef}
-              className="rounded-xl active:outline-none resize-none max-h-96 overflow-hidden"
+              className="rounded-xl active:outline-none resize-none max-h-96 overflow-hidden w-full"
               rows={1}
               value={evaluate}
               onChange={evaluateChange}
             />
-          </div>
+                </AccordionTab>
+            </Accordion>
         </div>
         <div className=" mx-4 xl:mx-80 my-4">
           <ConfirmFocus support={support} activities={activities} evaluate={evaluate} clearForm={clearfocusproblem}/>

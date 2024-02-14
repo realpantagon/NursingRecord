@@ -4,6 +4,7 @@ import { Toast } from 'primereact/toast';
 import { Button } from 'primereact/button';
 import { log } from 'console';
 
+
 interface ConfirmFocusProps {
     support: string;
     activities: string;
@@ -43,7 +44,7 @@ const ConfirmFocus: React.FC<ConfirmFocusProps> = ({ support, activities, evalua
             position:'center'
         });
         console.log("send",{support, activities, evaluate})
-        
+        //send
     };
 
     const confirmClear = () => {
@@ -78,7 +79,7 @@ const ConfirmFocus: React.FC<ConfirmFocusProps> = ({ support, activities, evalua
             <ConfirmDialog />
             <div className="card flex justify-between">
                 <Button onClick={confirmSave} icon="pi pi-save" label="บันทึกแบบฟอร์ม" className="p-button-info mr-2" />
-                <Button onClick={confirmClear} icon="pi pi-trash" label="ล้างแบบฟอร์ม" className="p-button-danger" />
+                <Button onClick={confirmClear} icon="pi pi-trash" label="ล้างแบบฟอร์ม" className="p-button-danger" outlined />
             </div>
         </>
     );
