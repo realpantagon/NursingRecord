@@ -23,7 +23,7 @@ export default function Searchbar() {
     console.log(keyword);
   }
   return (
-    <div className="p-inputgroup flex-2 max-w-md sm:max-w-xl md:max-w-2xl mx-auto">
+    <div className="p-inputgroup flex-2 max-w-md sm:max-w-xl md:max-w-2xl mx-auto my-4">
       <Dropdown
         value={selectedSearchType}
         onChange={(e) => setSelectedSearchType(e.value)}
@@ -33,7 +33,7 @@ export default function Searchbar() {
         className=""
       ></Dropdown>
       <InputText placeholder="Keyword" value={keyword} onChange={(e)=>setKeyword(e.target.value)}/>
-      <Link href="patient">
+      <Link href="../Form/form">
         <Button label="ค้นหา" onClick={handlesearch} className="bg-blue-600"/>
       </Link>
     
