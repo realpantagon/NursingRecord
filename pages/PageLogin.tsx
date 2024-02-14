@@ -1,4 +1,4 @@
-import saraburi from "../public/nurse2.jpeg";
+import saraburi from "../public/saraburi.jpg";
 import Image from "next/image";
 import React, { useState } from "react";
 import useAuth from "./api/auth/useAuth";
