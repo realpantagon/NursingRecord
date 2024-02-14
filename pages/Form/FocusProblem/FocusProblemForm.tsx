@@ -1,5 +1,9 @@
 import React, { ChangeEvent, useEffect, useRef, useState } from "react";
 import Appbar from "@/component/Appbar";
+import ConfirmFocus from "@/component/Focus/Confirmfocus";
+import Support from './../support';
+import { Accordion, AccordionTab } from 'primereact/accordion';
+import PatientData from "@/component/PatientData/PatientData";
 
 export default function FocusProblemForm() {
   const [support, setSupport] = useState("");
@@ -51,67 +55,48 @@ export default function FocusProblemForm() {
     setEvaluate("");
   };
 
+
+
   return (
     <div className="bg-stone-100 h-full">
       <Appbar />
       <h1 className="text-center text-3xl m-0">กรอกข้อมูล Focus Problem</h1>
-      <div className="flex flex-col sm:mx-0 md:mx-8 pb-96 xl:mx-32">
-        <div className="bg-white mx-4 my-4 rounded-md px-4 py-4 grid md:grid-cols-2  lg:grid-cols-5 items-center shadow-md">
-          <div className="my-2">ชื่อ:</div>
-          <div className="my-2">วันเกิด:</div>
-          <div className="my-2">Bed Number:</div>
-          <div className="my-2">Admit Number:</div>
-          <div className="my-2">เวลาบันทึก:</div>
-        </div>
-        <div className="flex flex-col justify-center mx-4 bg-white rounded-2xl">
-          <div className="my-4 xl:mx-8 px-4 py-8 bg-teal-100 flex flex-col rounded-xl">
-            <label className="mb-4 text-xl font-bold">ข้อมูลสนับสนุน</label>
-            <textarea
+      <div className="flex flex-col sm:mx-0 md:mx-8 pb-96 xl:mx-52">
+        <PatientData/>
+        <div className="card mx-4 xl:mx-80">
+            <Accordion multiple activeIndex={[0]}>
+                <AccordionTab header="ข้อวินิจฉัย">
+                <textarea
               ref={supportTextareaRef}
-              className="rounded-xl active:outline-none resize-vertical max-h-96"
+              className="rounded-xl active:outline-none resize-none max-h-96 overflow-hidden w-full"
               rows={1}
               value={support}
               onChange={supportChange}
             />
-          </div>
-
-          <div className="my-4 xl:mx-8 px-4 py-8 bg-indigo-100 flex flex-col rounded-xl">
-            <label className="mb-4 text-xl font-bold">กิจกรรมพยาบาล</label>
-            <textarea
+                </AccordionTab>
+                <AccordionTab header="กิจกรรมพยาบาล">
+                <textarea
               ref={activitiesTextareaRef}
-              className="rounded-xl active:outline-none resize-vertical max-h-96"
+              className="rounded-xl active:outline-none resize-none max-h-96 overflow-hidden w-full"
               rows={1}
               value={activities}
               onChange={activitiesChange}
             />
-          </div>
-
-          <div className="my-4 xl:mx-8 px-4 py-8 bg-purple-100 flex flex-col rounded-xl">
-            <label className="mb-4 text-xl font-bold">การประเมินผล</label>
-            <textarea
+                </AccordionTab>
+                <AccordionTab header="การประเมินผล">
+                <textarea
               ref={evaluateTextareaRef}
-              className="rounded-xl active:outline-none resize-vertical max-h-96"
+              className="rounded-xl active:outline-none resize-none max-h-96 overflow-hidden w-full"
               rows={1}
               value={evaluate}
               onChange={evaluateChange}
             />
-          </div>
+                </AccordionTab>
+            </Accordion>
         </div>
-        <div className="flex justify-between mx-4 xl:mx-16 my-4">
-          <div
-            className="bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 text-white px-12 py-2 rounded-md"
-            onClick={submitfocusproblem}
-          >
-            {" "}
-            บันทึก
+        <div className=" mx-4 xl:mx-80 my-4">
+          <ConfirmFocus support={support} activities={activities} evaluate={evaluate} clearForm={clearfocusproblem}/>
           </div>
-          <div
-            className="hover:bg-red-300 px-2 py-2 rounded-md"
-            onClick={clearfocusproblem}
-          >
-            ล้างแบบฟอร์ม
-          </div>
-        </div>
       </div>
     </div>
   );
