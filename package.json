@@ -9,7 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@tanstack/react-query": "^5.17.19",
     "axios": "^1.6.4",
     "flowbite": "^2.2.1",
     "flowbite-react": "^0.7.2",

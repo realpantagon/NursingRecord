@@ -1,6 +1,4 @@
-import React, { useState } from "react";
-import axios from "axios";
-import { User } from "@/interface/user.interface";
+import { useState } from "react";
 import { UNPROTECTED_API } from "../api.route";
 import { useRouter } from "next/router";
 import axiosCustom from "@/utils/auth/axioCustom";
