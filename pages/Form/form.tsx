@@ -47,12 +47,11 @@ export default function Form() {
           <PatientHistory />
           <PatientHistory />
         </Sidebar>
-        <Button icon="pi pi-arrow-right" onClick={() => setVisible(true)} />
+        <Button icon="pi pi-arrow-right flex-none" onClick={() => setVisible(true)} />
+      <h1 className="text-center text-3xl m-0 flex-1">กรอกข้อมูล</h1>
       </div>
 
-      <h1 className="text-center text-3xl m-0">กรอกข้อมูล</h1>
-
-      <div className="flex flex-col w-full">
+      <div className="flex flex-col xl:mx-52">
         <PatientData />
         <div className="rounded-lg pt-4 bg-white mx-4 lg:mx-52">
           <TabView>

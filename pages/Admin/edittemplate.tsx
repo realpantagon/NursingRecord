@@ -69,9 +69,7 @@ const toast = useRef<Toast>(null);
           <div className="card">
             <Accordion multiple activeIndex={0}>
               <AccordionTab header="ข้อวินิจฉัยทางพยาบาล">
-                <p className="m-0">
                 <p className="m-0">1</p>
-                </p>
               </AccordionTab>
               <AccordionTab header="ข้อวินิจฉัย">
                 <p className="m-0">2</p>

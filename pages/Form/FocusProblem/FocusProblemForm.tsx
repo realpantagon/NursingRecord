@@ -61,7 +61,7 @@ export default function FocusProblemForm() {
     <div className="bg-stone-100 h-full">
       <Appbar />
       <h1 className="text-center text-3xl m-0">กรอกข้อมูล Focus Problem</h1>
-      <div className="flex flex-col sm:mx-0 md:mx-8 pb-96 xl:mx-32">
+      <div className="flex flex-col sm:mx-0 md:mx-8 pb-96 xl:mx-52">
         <PatientData/>
         <div className="card mx-4 xl:mx-80">
             <Accordion multiple activeIndex={[0]}>
