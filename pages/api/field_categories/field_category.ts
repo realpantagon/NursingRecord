@@ -3,8 +3,6 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import { PROTECTED_API } from "../api.route";
 import { FieldCategory, UpsertFieldCategory } from "./type";
 
-
-
 export const useQueryGetFieldCategories = () => {
 	const query = useQuery({
 		queryKey: ["getFieldCategories"],
@@ -19,10 +17,12 @@ export const useQueryGetFieldCategories = () => {
 
 export const useMutationUpsertFieldCategory = (body: UpsertFieldCategory) => {
 	const mutation = useMutation<UpsertFieldCategory>({
-		mutationKey:["upsertFieldCategory"],
-		mutationFn:()=>
-			axiosCustom.put(PROTECTED_API.UPSERT_FIELD_CATEGORY,body).then((response)=>response.data)
-	})
+		mutationKey: ["upsertFieldCategory"],
+		mutationFn: () =>
+			axiosCustom
+				.put(PROTECTED_API.UPSERT_FIELD_CATEGORY, body)
+				.then((response) => response.data),
+	});
 
-	return mutation
-}
+	return mutation;
+};
