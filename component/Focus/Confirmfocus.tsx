@@ -1,8 +1,9 @@
 import React, { useRef, useState } from 'react';
 import { ConfirmDialog, confirmDialog } from 'primereact/confirmdialog';
-import { Toast } from 'primereact/toast';
+import { toastRef } from "@/component/toast/toast";
 import { Button } from 'primereact/button';
 import { log } from 'console';
+import { Toast } from 'primereact/toast';
 
 
 interface ConfirmFocusProps {
@@ -14,10 +15,9 @@ interface ConfirmFocusProps {
 
 
 const ConfirmFocus: React.FC<ConfirmFocusProps> = ({ support, activities, evaluate, clearForm }) => {
-    const toast = useRef<Toast>(null);
 
     const reject = () => {
-        toast.current?.show({
+        toastRef.current?.show({
             severity: 'warn',
             summary: 'Rejected',
             detail: 'ข้อมูลยังไม่มีการเปลี่ยนแปลง',
@@ -32,7 +32,7 @@ const ConfirmFocus: React.FC<ConfirmFocusProps> = ({ support, activities, evalua
             header: 'Confirmation',
             icon: 'pi pi-check-square',
             accept:()=>{
-                toast.current?.show({
+                toastRef.current?.show({
                     severity: 'success',
                     summary: 'Success',
                     detail: 'บันทึกข้อมูลสำเร็จ',
@@ -57,7 +57,7 @@ const ConfirmFocus: React.FC<ConfirmFocusProps> = ({ support, activities, evalua
             acceptClassName: 'p-button-danger',
             accept: () => {
                 clearForm(); // Use clearForm prop here
-                toast.current?.show({
+                toastRef.current?.show({
                     severity: 'info',
                     summary: 'Cancelled',
                     detail: 'ล้างแบบฟอร์มสำเร็จ',
@@ -75,7 +75,7 @@ const ConfirmFocus: React.FC<ConfirmFocusProps> = ({ support, activities, evalua
 
     return (
         <>
-            <Toast ref={toast} position="bottom-right"/>
+            <Toast ref={toastRef} position="bottom-right"/>
             <ConfirmDialog />
             <div className="card flex justify-between">
                 <Button onClick={confirmSave} icon="pi pi-save" label="บันทึกแบบฟอร์ม" className="p-button-info mr-2" />

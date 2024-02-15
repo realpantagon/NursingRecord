@@ -6,6 +6,7 @@ import React, { useRef, useState } from "react";
 import Link from "next/link";
 import useAuth from "./api/auth/useAuth";
 
+import { toastRef } from "@/component/toast/toast";
 
 export default function Loginpage() {
   const [password, setPassword] = useState("");
@@ -16,10 +17,32 @@ export default function Loginpage() {
   const handleLogin = async (e: any) => {
     e.preventDefault();
 
-    await signIn(username, password);
+    await signIn(username, password, showSuccess, showError);
   };
+
+  const showSuccess = () => {
+    if (toastRef.current) {
+      toastRef.current?.show({
+        severity: "success",
+        summary: "Success",
+        detail: "Login Successful",
+        life: 3000,
+      });
+    }
+  };
+
+  const showError = () => {
+    toastRef.current?.show({
+      severity: "error",
+      summary: "Error",
+      detail: "Login Fail",
+      life: 3000,
+      
+    });
+  };
+
   return (
-    <div className="bg-stone-100 h-screen flex items-center justify-center">
+    <div className="bg-stone-100 h-screen flex items-center justify-center m-0">
       <div className="flex flex-row justify-center items-stretch">
         <div className="hidden xl:flex bg-white xl:w-96 justify-center items-center flex-col rounded-2xl shadow-2xl p-8">
           <div className="flex flex-col justify-center items-center space-y-4">
@@ -31,7 +54,6 @@ export default function Loginpage() {
             </h1>
             {/* <Image src={hospital} alt="Logo" width={100} /> */}
             <h1>โรงพยาบาลสระบุรี</h1>
-
           </div>
         </div>
 
