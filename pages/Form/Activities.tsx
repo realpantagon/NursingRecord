@@ -40,9 +40,9 @@ function Activities() {
                     return (
                         <div key={category.key} className="flex align-items-center py-4 px-4 bg-blue-200 rounded-md">
                             <Checkbox inputId={category.key} name="category" value={category} onChange={onCategoryChange} checked={selectedCategories.some((item) => item.key === category.key)} />
-                            <label htmlFor={category.key} className="ml-2">
+                            <textarea >
                                 {category.name}
-                            </label>
+                            </textarea>
                         </div>
                     );
                 })}
