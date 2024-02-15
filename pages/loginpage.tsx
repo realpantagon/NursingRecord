@@ -1,99 +1,75 @@
 import Image from "next/image";
-import cpe from "../public/logo cpe.jpeg";
-import ent from "../public/ent logo.jpeg";
+import cpecmu from "../public/cpecmu.png";
+import hospital from "../public/saraburi.jpg";
+
 import React, { useRef, useState } from "react";
 import Link from "next/link";
-import styles from "@/styles/loginpage.module.css";
-
-import { Button } from "@mantine/core";
-import { notifications } from "@mantine/notifications";
-
-import { InputText } from "primereact/inputtext";
-import { Password } from "primereact/password";
-
-import navbar from "@/component/navbar";
 import useAuth from "./api/auth/useAuth";
-import { log } from "console";
+
 
 export default function Loginpage() {
-	const [password, setPassword] = useState("");
-	const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [username, setUsername] = useState("");
 
-	const { signIn, error } = useAuth();
+  const { signIn, error } = useAuth();
 
-	const handleLogin = async (e: any) => {
-		e.preventDefault();
+  const handleLogin = async (e: any) => {
+    e.preventDefault();
 
-		await signIn(username, password);
-	};
-	return (
-		<div className={styles.container}>
-			<div className={styles.boxsideboxcontainer}>
-				<div className={styles.sidebox}>
-					<div className={styles.img}>
-						<div className={styles.text2}>
-							<div>
-								<Image src={cpe} alt="Logo" width={100} />
-								<Image src={ent} alt="Logo" width={100} />
-							</div>
-							<span>มหาวิทยาลัยเชียใหม่ คณะวิศวกรรมศาสตร์</span>
-							<span>ภาควิชาคอมพิวเตอร์</span>
-						</div>
-					</div>
-				</div>
-				<div className={styles.box}>
-					<div className={styles.text}>
-						<span className={styles.engtext}>NURSING RECORD</span>
-						<span>ระบบจัดการการบันทึกทางพยาบาล</span>
-					</div>
-					<div className={styles.username}>
-						<div className="card flex justify-content-center">
-							<span className="p-float-label p-input-icon-right">
-								<i className="pi pi-user" />
-								<InputText
-									id="username"
-									value={username}
-									onChange={(e) => setUsername(e.target.value)}
-								/>
-								<label htmlFor="username">Username</label>
-							</span>
-						</div>
-					</div>
-					<div className={styles.password}>
-						<div className="card flex justify-content-center">
-							<span className="p-float-label">
-								
-								<Password
-									value={password}
-									onChange={(e) => setPassword(e.target.value)}
-									toggleMask
-									feedback={false}
-								/>
-								<label htmlFor="password">Password</label>
-							</span>
-						</div>
-					</div>
-					<div className={styles.loginbutton}>
-						{/* <Link href="home"> */}
-						<Button
-							fullWidth
-							variant="gradient"
-							gradient={{ from: "teal", to: "lime", deg: 90 }}
-							onClick={(e) => {
-								notifications.show({
-									title: "Default notification",
-									message: "Hey there, your code is awesome! 🤥 ",
-									autoClose: 1500,
-								});
-								handleLogin(e);
-							}}
-						>
-							Login
-						</Button>
-						{/* </Link> */}
-					</div>
-				</div>
-			</div>
-		</div>
-	);
+    await signIn(username, password);
+  };
+  return (
+    <div className="bg-stone-100 h-screen flex items-center justify-center">
+      <div className="flex flex-row justify-center items-stretch">
+        <div className="hidden xl:flex bg-white xl:w-96 justify-center items-center flex-col rounded-2xl shadow-2xl p-8">
+          <div className="flex flex-col justify-center items-center space-y-4">
+            <Image src={cpecmu} alt="Logo" width={250} />
+            <h1 className="text-center">
+              คณะวิศวกรรมศาสตร์ มหาวิทยาลัยเชียงใหม่
+              <br /> {/* Line break element */}
+              <span>ภาควิชาวิศวกรรมคอมพิวเตอร์</span>
+            </h1>
+            {/* <Image src={hospital} alt="Logo" width={100} /> */}
+            <h1>โรงพยาบาลสระบุรี</h1>
+
+          </div>
+        </div>
+
+        <div>
+          <form className="max-w-[400px] w-full mx-auto bg-white p-8 px-8 rounded-2xl  shadow-2xl">
+            <h2 className="text-4xl font-bold text-center">Nursing Record</h2>
+            <h2 className="text-2xl font-bold text-center">
+              ระบบจัดการการบันทึกทางพยาบาล
+            </h2>
+            <div className="flex flex-col text-grey-400 py-2">
+              <label>Username</label>
+              <input
+                className="rounded-xl bg-white focus:border-blue-500 focus:bg-stone-100 focus:outline-none"
+                type="text"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+              />
+            </div>
+            <div className="flex flex-col text-grey-400 py-2">
+              <label>Password</label>
+              <input
+                className="p-2 rounded-xl bg-white focus:border-black focus:bg-stone-100 focus:outline-none"
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </div>
+            <button
+              className="w-full my-5 py-2 bg-emerald-500 shadow-lg shadow-emerald-100 hover:shadow-emerald-300 text-white font-semibold rounded-xl border-none"
+              onClick={(e) => {
+                handleLogin(e);
+              }}
+            >
+              Sign In
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  );
 }
