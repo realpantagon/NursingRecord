@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Link from "next/link";
 import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
 import { Dropdown } from "primereact/dropdown";
@@ -18,10 +17,14 @@ export default function Searchbar() {
     { name: "Admid Number", code: "AD" },
   ];
 
-  const handlesearch = ()=>{
-    console.log(selectedSearchType?.code);
-    console.log(keyword);
+  const handlesearch = () => {
+    if (selectedSearchType) {
+      console.log({ selectedSearchType: selectedSearchType.name, keyword: keyword });
+    } else {
+      console.log({ keyword: keyword });
+    }
   }
+  
   return (
     <div className="p-inputgroup flex-2 max-w-md sm:max-w-xl md:max-w-2xl mx-auto my-4">
       <Dropdown
@@ -33,9 +36,7 @@ export default function Searchbar() {
         className=""
       ></Dropdown>
       <InputText placeholder="Keyword" value={keyword} onChange={(e)=>setKeyword(e.target.value)}/>
-      <Link href="../Form/form">
         <Button label="ค้นหา" onClick={handlesearch} className="bg-blue-600"/>
-      </Link>
     
     </div>
   );
