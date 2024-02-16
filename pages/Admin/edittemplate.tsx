@@ -19,6 +19,20 @@ export default function Template() {
 
   console.log(selectDisease);
 
+  const ndx: Disease[] = [
+    { name: "เสี่ยงต่อการติดเชื้อระบบทางเดินหายใจ ที่สัมพันธ์กับการใช้เครื่องช่วยหายใจ เนื่องจาก ภาวะการหายใจล้มเหลว", code: "1" },
+    { name: "เสี่ยงต่อการเกิดภาวะแทรกซ้อน จากการใส่ท่อช่วยหายใจ เช่น infection, Barotruma , Tracheal ischemia", code: "2" },
+    { name: "เสี่ยงต่อการเกิดภาวะสูญเสียการแลกเปลี่ยนก๊าชและภาวะออกซิเจนในเลือดต่ำ(Hypoxemia) เนื่องจากมีเสมหะปริมาณมากในท่อช่วยหายใจ", code: "3" },
+    { name: "เกิดภาวะเครียดจากการเจ็บป่วยในระยะวิกฤตเนื่องจากมีภาวะพร่องในการสื่อสาร", code: "4" },
+    { name: "ภาวะโภชนาการเปลี่ยนแปลง: ได้รับน้อยกว่าความต้องการของร่างกาย เนื่องจากไม่สามารถรับประทานอาหารได้เพียงพอ จากการย่อยและการดูดซึมผิดปกติหรือมีความต้องการสารอาหารเพิ่มขึ้น", code: "5" },
+    { name: "มีความไม่สมดุลของสารน้ำ และอิเลคโตรไลท์เนื่องจากภาวะการหายใจล้มเหลว", code: "6" },
+    { name: "เสี่ยงต่อการได้รับออกซิเจนไม่เพียงพอ เนื่องจากการระบายอากาศและ แลกเปลี่ยนก๊สซในถุงลมปอดลดลง", code: "7" },
+    { name: "เสี่ยงต่อการเกิดภาวะแทรกซ้อนจากการนอนติดเตียงเป็นเวลานาน", code: "8" },
+  ];
+  const [selectNdx, setSelectNdx] = useState<Disease | null>(null);
+
+  console.log(selectDisease);
+
   const confirmSave = () => {
     confirmDialog({
         message: 'อัปเดทTemplateของบันทึก',
@@ -69,7 +83,14 @@ const toast = useRef<Toast>(null);
           <div className="card">
             <Accordion multiple activeIndex={0}>
               <AccordionTab header="ข้อวินิจฉัยทางพยาบาล">
-                <p className="m-0">1</p>
+              <Dropdown
+            value={selectNdx}
+            onChange={(e: DropdownChangeEvent) => setSelectNdx(e.value)}
+            options={ndx}
+            optionLabel="name"
+            placeholder="เลือกกลุ่มโรค"
+            className="w-full md:w-14rem"
+          />
               </AccordionTab>
               <AccordionTab header="ข้อวินิจฉัย">
                 <p className="m-0">2</p>
