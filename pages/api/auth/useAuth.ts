@@ -5,32 +5,30 @@ import { useRouter } from "next/router";
 function useAuth() {
 	const [error, setError] = useState(true);
 	const router = useRouter();
-	async function signIn(username: string, password: string, onSuccess: () => void, onError: () => void) {
+	async function signIn(
+		username: string,
+		password: string,
+		onSuccess: () => void,
+		onError: () => void
+	) {
 		try {
 			const response = await axiosCustom.post(UNPROTECTED_API.signIn, {
 				password,
 				username,
 			});
 			// Check response status and handle accordingly
-			if (response.status === 200) {
-				console.log(response);
 
-				// localStorage.setItem("accessToken", response.data.data.access_token);
-				// localStorage.setItem("refreshToken", response.data.data.access_token);
-				// axiosCustom.defaults.headers.common["X-Token"] =
-				// 	response.data.data.access_token;
-				onSuccess();
-				setError(false);
-				router.push("/home");
-				console.log("Login successful", response.data);
-			} else {
-				onError();
-				setError(true);
-				console.log("Login failed with status:", response.status);
-			}
+			// localStorage.setItem("accessToken", response.data.data.access_token);
+			// localStorage.setItem("refreshToken", response.data.data.access_token);
+			// axiosCustom.defaults.headers.common["X-Token"] =
+			// 	response.data.data.access_token;
+			onSuccess();
+			setError(false);
+			router.push("/home");
+			// console.log("Login successful", response.data);
 		} catch (err) {
 			onError();
-			console.log("signIn error", err);	
+			console.log("signIn error", err);
 		}
 	}
 
