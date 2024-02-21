@@ -44,8 +44,7 @@ export default function Search() {
 					<Searchbar onSearch={handleSearch} />
 					<div className="xl:mx-52">
 						<div className=" h-full gap-2 rounded-md px-4 py-4 grid lg:grid-cols-3 md:grid-cols-2 items-center ">
-							
-							{searchResults?.map(result => <PatientCard patient={result} />)}
+							{searchResults?.map(result => <PatientCard patient={result} key={result.ID}/>)}
 						</div>
 					</div>
 				</div>
