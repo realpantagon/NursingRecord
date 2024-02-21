@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Appbar from "@/component/Appbar";
 import Searchbar, { SearchType } from "@/component/Searchbar";
 import PatientCard from "@/component/PatientData/PatientCard";
-import { useQuerySearchPatients } from "./api/patients/patient";
+import { useQuerySearchPatients } from "./api/patients/searchpatient";
 
 export default function Search() {
 	const [searchType, setSearchType] = useState<SearchType | null>(null);
@@ -44,17 +44,8 @@ export default function Search() {
 					<Searchbar onSearch={handleSearch} />
 					<div className="xl:mx-52">
 						<div className=" h-full gap-2 rounded-md px-4 py-4 grid lg:grid-cols-3 md:grid-cols-2 items-center ">
-							{/* Render your search results here */}
-							{searchResults !== undefined &&
-								Object.keys(searchResults ?? {}).map((patient: any) => {
-									// Specify the type of the index expression as 'string'
-									return (
-										<PatientCard
-											key={patient}
-											patient={searchResults[patient]}
-										/>
-									);
-								})}
+							
+							{searchResults?.map(result => <PatientCard patient={result} />)}
 						</div>
 					</div>
 				</div>

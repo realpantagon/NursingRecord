@@ -1,5 +1,5 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
-import { SearchPatient, Patient, UpsertPatient } from "./type";
+import { SearchPatient, Patient, UpsertPatient, PPResponse } from "./type";
 import axiosCustom from "@/utils/auth/axioCustom";
 import { PROTECTED_API } from "../api.route";
 
@@ -9,9 +9,8 @@ export const useQuerySearchPatients = (body: SearchPatient) => {
 		queryFn: () =>
 			axiosCustom
 				.post(PROTECTED_API.SEARCH_PATIENTS, body)
-				.then((response) => response.data),
+				.then(({data}) => data.data),
 	});
-
 	return query;
 };
 

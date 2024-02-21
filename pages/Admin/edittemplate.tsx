@@ -33,7 +33,7 @@ export default function Template() {
             });
         },
         reject,
-        defaultFocus: 'accept',
+        // defaultFocus: 'accept',
         position:'center'
     });
     
