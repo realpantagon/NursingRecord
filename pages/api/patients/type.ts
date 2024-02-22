@@ -45,6 +45,9 @@ export const LinkPatientSchema = z.object({
 
 export const RemoveLinkedPatientsSchema = z.array(z.string());
 
+export type PPResponse<T> = {
+	data: T
+}
 export type Patient = z.infer<typeof PatientSchema>;
 
 export type SearchPatient = z.infer<typeof SearchPatientSchema>;
