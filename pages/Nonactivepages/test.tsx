@@ -1,7 +1,7 @@
 // pages/index.tsx or any other relevant file
 import React, { useEffect, useState } from "react";
-import { useQuerySearchPatients } from "./api/patients/searchpatient";
-import { Patient } from "./api/patients/type";
+import { useQuerySearchPatients } from "../api/patients/searchpatient";
+import { Patient } from "../api/patients/type";
 const HomePage: React.FC = () => {
 	const body = {
 		an: "",

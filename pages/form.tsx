@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { TabView, TabPanel } from "primereact/tabview";
-import NDX from "./ndx";
-import Support from "./support";
-import Activities from "./Activities";
-import Evaluate from "./Evaluate";
+import NDX from "./Form/ndx";
+import Support from "./Form/support";
+import Activities from "./Form/Activities";
+import Evaluate from "./Form/Evaluate";
 import { Button } from "primereact/button";
 import Link from "next/link";
 import Appbar from "@/component/Appbar";

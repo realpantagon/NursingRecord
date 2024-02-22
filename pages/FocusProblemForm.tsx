@@ -1,7 +1,7 @@
 import React, { ChangeEvent, useEffect, useRef, useState } from "react";
 import Appbar from "@/component/Appbar";
 import ConfirmFocus from "@/component/Focus/Confirmfocus";
-import Support from './../support';
+import Support from './Form/support';
 import { Accordion, AccordionTab } from 'primereact/accordion';
 import PatientData from "@/component/PatientData/PatientData";
 

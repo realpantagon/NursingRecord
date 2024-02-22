@@ -1,5 +1,5 @@
 import Image from "next/image";
-import cpecmu from "../public/cpecmu.png";
+import cpecmu from "../public/cpecmu.png"
 import hospital from "../public/saraburi.jpg";
 
 import React, { useRef, useState } from "react";

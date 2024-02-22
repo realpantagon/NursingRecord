@@ -12,8 +12,8 @@ export default function Home() {
         <div className=" h-full gap-2 rounded-md px-4 py-4 grid lg:grid-cols-3 md:grid-cols-2 items-center ">
           {/* <PatientCard/>
           <PatientCard/>
-          <PatientCard/>
-          <PatientCard/> */}
+        <PatientCard/>
+        <PatientCard/> */}
         </div>
       </div>
     </div>
