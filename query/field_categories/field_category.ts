@@ -8,8 +8,8 @@ export const useQueryGetFieldCategories = () => {
     queryKey: ["fieldCategories"],
     queryFn: () =>
       axiosCustom
-        .get<FieldCategory>(PROTECTED_API.GET_FIELD_CATEGORIES)
-        .then((response) => response.data),
+        .get(PROTECTED_API.GET_FIELD_CATEGORIES)
+        .then((response) => response.data.data),
   });
 
   return query;
@@ -21,9 +21,9 @@ export const useMutationUpsertFieldCategory = (body: UpsertFieldCategory) => {
     mutationFn: () =>
       axiosCustom
         .put(PROTECTED_API.UPSERT_FIELD_CATEGORY, body)
-        .then((response) => response.data),
-    onSuccess: () =>
-      queryClient.invalidateQueries({ queryKey: ["fieldCategories"] }),
+        .then((response) => response.data.data),
+    onSuccess: async () =>
+      await queryClient.invalidateQueries({ queryKey: ["fieldCategories"] }),
   });
 
   return mutation;

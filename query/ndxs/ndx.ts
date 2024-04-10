@@ -8,8 +8,8 @@ export const useQueryGetNdxs = () => {
     queryKey: ["ndxs"],
     queryFn: () =>
       axiosCustom
-        .get<Ndx[]>(PROTECTED_API.GET_NDXS)
-        .then((response) => response.data),
+        .get(PROTECTED_API.GET_NDXS)
+        .then((response) => response.data.data),
   });
 
   return query;
@@ -21,8 +21,9 @@ export const useMutationUpsertNdx = (body: UpsertNdx) => {
     mutationFn: () =>
       axiosCustom
         .put(PROTECTED_API.UPSERT_NDX, body)
-        .then((response) => response.data),
-    onSuccess: () => queryClient.invalidateQueries({ queryKey: ["ndxs"] }),
+        .then((response) => response.data.data),
+    onSuccess: async () =>
+      await queryClient.invalidateQueries({ queryKey: ["ndxs"] }),
   });
 
   return mutation;

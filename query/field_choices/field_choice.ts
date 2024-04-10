@@ -8,10 +8,8 @@ export const useQueryGetFieldChoiceByNdx = (ndxId: string) => {
     queryKey: ["fieldChoices"],
     queryFn: () =>
       axiosCustom
-        .get<FieldChoice>(
-          PROTECTED_API.GET_FIELD_CHOICES_BY_NDX.replace("{ndx_id}", ndxId)
-        )
-        .then((response) => response.data),
+        .get(PROTECTED_API.GET_FIELD_CHOICES_BY_NDX.replace("{ndx_id}", ndxId))
+        .then((response) => response.data.data),
   });
 
   return query;
@@ -23,9 +21,9 @@ export const useMutationUpsertFieldChoice = (body: UpsertFieldChoice) => {
     mutationFn: () =>
       axiosCustom
         .put(PROTECTED_API.UPSERT_FIELD_CHOICE, body)
-        .then((response) => response.data),
-    onSuccess: () =>
-      queryClient.invalidateQueries({ queryKey: ["fieldChoices"] }),
+        .then((response) => response.data.data),
+    onSuccess: async () =>
+      await queryClient.invalidateQueries({ queryKey: ["fieldChoices"] }),
   });
 
   return mutation;
@@ -36,7 +34,7 @@ export const useMutationDeleteFieldChoice = (id: string) => {
     mutationFn: () =>
       axiosCustom
         .put(PROTECTED_API.DELETE_FIELD_CHOICE.replace("{id}", id))
-        .then((response) => response.data),
+        .then((response) => response.data.data),
   });
 
   return mutation;

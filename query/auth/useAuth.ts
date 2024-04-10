@@ -2,6 +2,7 @@ import axiosCustom from "@/utils/auth/axioCustom";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { PROTECTED_API, UNPROTECTED_API } from "../api.route";
 import { Login } from "./type";
+import { toastRef } from "@/component/toast/toast";
 
 export const useQueryCheckAuth = () => {
   const query = useQuery({
@@ -9,18 +10,45 @@ export const useQueryCheckAuth = () => {
     queryFn: () =>
       axiosCustom
         .get(PROTECTED_API.CHECK_AUTH)
-        .then((response) => response.data),
+        .then((response) => response.data.data),
   });
 
   return query;
 };
 
-export const useMutationLogin = (body: Login) => {
+export const useMutationLogin = () => {
+  const showSuccess = () => {
+    if (toastRef.current) {
+      toastRef.current?.show({
+        severity: "success",
+        summary: "Success",
+        detail: "Login Successful",
+        life: 3000,
+      });
+    }
+  };
+
+  const showError = () => {
+    if (toastRef.current) {
+      toastRef.current?.show({
+        severity: "error",
+        summary: "Error",
+        detail: "Login Fail",
+        life: 3000,
+      });
+    }
+  };
   const mutation = useMutation({
-    mutationFn: () =>
-      axiosCustom
-        .post(UNPROTECTED_API.LOGIN, body)
-        .then((response) => response.data),
+    mutationFn: async (body: Login) => {
+      const response = await axiosCustom.post(UNPROTECTED_API.LOGIN, body);
+      return response.data.data.data;
+    },
+    onSuccess: () => {
+      showSuccess();
+      window.location.href = "/search";
+    },
+    onError: () => showError(),
   });
+
   return mutation;
 };

@@ -8,8 +8,8 @@ export const useQueryGetMe = () => {
     queryKey: ["user"],
     queryFn: () =>
       axiosCustom
-        .get<User>(PROTECTED_API.GET_ME)
-        .then((response) => response.data),
+        .get(PROTECTED_API.GET_ME)
+        .then((response) => response.data.data),
   });
 
   return query;

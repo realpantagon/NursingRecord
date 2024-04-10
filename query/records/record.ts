@@ -9,7 +9,7 @@ export const useQueryRecord = (id: string) => {
     queryFn: () =>
       axiosCustom
         .get<Record>(PROTECTED_API.GET_RECORDS.replace("id", id))
-        .then((response) => response.data),
+        .then((response) => response.data.data),
   });
 
   return query;
@@ -22,7 +22,7 @@ export const useQueryRecordsByPatientId = (patientId: string) => {
         .get<Record[]>(
           PROTECTED_API.GET_RECORDS_BY_PATIENT.replace("patient_id", patientId)
         )
-        .then((response) => response.data),
+        .then((response) => response.data.data),
   });
 
   return query;
@@ -34,8 +34,9 @@ export const useMutationUpsertRecord = (body: UpsertRecord) => {
     mutationFn: () =>
       axiosCustom
         .put(PROTECTED_API.UPSERT_RECORD, body)
-        .then((response) => response.data),
-    onSuccess: () => queryClient.invalidateQueries({ queryKey: ["record"] }),
+        .then((response) => response.data.data),
+    onSuccess: async () =>
+      await queryClient.invalidateQueries({ queryKey: ["record"] }),
   });
 
   return mutation;
@@ -47,8 +48,9 @@ export const useMutationDeleteRecord = (id: string) => {
     mutationFn: () =>
       axiosCustom
         .delete(PROTECTED_API.DELETE_RECORD.replace("id", id))
-        .then((response) => response.data),
-    onSuccess: () => queryClient.invalidateQueries({ queryKey: ["record"] }),
+        .then((response) => response.data.data),
+    onSuccess: async () =>
+      await queryClient.invalidateQueries({ queryKey: ["record"] }),
   });
 
   return mutation;

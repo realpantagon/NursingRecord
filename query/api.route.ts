@@ -1,5 +1,5 @@
 export enum UNPROTECTED_API {
-  LOGIN = "/api/login",
+  LOGIN = "/api/v1/login",
   PING = "/api/ping",
 }
 

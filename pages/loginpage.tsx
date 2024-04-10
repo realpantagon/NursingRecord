@@ -1,43 +1,21 @@
 import Image from "next/image";
 import cpecmu from "../public/cpecmu.png";
-import hospital from "../public/saraburi.jpg";
 
-import React, { useRef, useState } from "react";
-import Link from "next/link";
-import useAuth from "./api/auth/useAuth";
-
-import { toastRef } from "@/component/toast/toast";
+import React, { useState } from "react";
+import { useMutationLogin } from "@/query/auth/useAuth";
 
 export default function Loginpage() {
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
 
-  const { signIn, error } = useAuth();
+  const loginMutation = useMutationLogin();
 
   const handleLogin = async (e: any) => {
     e.preventDefault();
 
-    await signIn(username, password, showSuccess, showError);
-  };
-
-  const showSuccess = () => {
-    if (toastRef.current) {
-      toastRef.current?.show({
-        severity: "success",
-        summary: "Success",
-        detail: "Login Successful",
-        life: 3000,
-      });
-    }
-  };
-
-  const showError = () => {
-    toastRef.current?.show({
-      severity: "error",
-      summary: "Error",
-      detail: "Login Fail",
-      life: 3000,
-      
+    await loginMutation.mutateAsync({
+      Username: username,
+      Password: password,
     });
   };
 
