@@ -41,7 +41,7 @@ export const useMutationLogin = () => {
   const mutation = useMutation({
     mutationFn: async (body: Login) => {
       const response = await axiosCustom.post(UNPROTECTED_API.LOGIN, body);
-      return response.data.data.data;
+      return response.data.data;
     },
     onSuccess: () => {
       showSuccess();
