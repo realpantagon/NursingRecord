@@ -3,38 +3,21 @@ import Appbar from "@/component/Appbar";
 import Searchbar, { SearchType } from "@/component/Searchbar";
 import PatientCard from "@/component/PatientData/PatientCard";
 import { useQuerySearchPatients } from "@/query/patients/searchpatient";
+import { Patient, SearchPatient } from "@/query/patients/type";
 
 export default function Search() {
-  const [searchType, setSearchType] = useState<SearchType | null>(null);
-  const [keyword, setKeyword] = useState("");
   const patientsQuery = useQuerySearchPatients();
 
-  useEffect(() => {
-    // Define a function to trigger refetch
-    const fetchResults = async () => {
-      if (searchType) {
-        const body = {
-          an: searchType.code === "AN" ? keyword : "",
-          bed_number: searchType.code === "BN" ? keyword : "",
-          name: searchType.code === "Name" ? keyword : "",
-        };
-      }
-      await refetch();
+  const handleSearch = async (type: SearchType, keyword: string) => {
+    const body: SearchPatient = {
+      an: type.code === "AN" ? keyword : "",
+      bed_number: type.code === "BN" ? keyword : "",
+      name: type.code === "Name" ? keyword : "",
     };
-
-    fetchResults();
-  }, [searchType, keyword]);
-
-  const handleSearch = (type: SearchType, keyword: string) => {
-    setSearchType(type);
-    setKeyword(keyword);
-    patientsQuery.mutateAsync({
-      an: searchType && searchType.code === "AN" ? keyword : "",
-      bed_number: searchType && searchType.code === "BN" ? keyword : "",
-      name: searchType && searchType.code === "Name" ? keyword : "",
-    });
+    await patientsQuery.mutateAsync(body);
   };
 
+  // if (!patientsQuery.data) return;
   return (
     <div className="bg-stone-100 min-h-screen">
       <Appbar />
@@ -44,7 +27,7 @@ export default function Search() {
           <Searchbar onSearch={handleSearch} />
           <div className="xl:mx-52">
             <div className=" h-full gap-2 rounded-md px-4 py-4 grid lg:grid-cols-3 md:grid-cols-2 items-center ">
-              {patientsQuery?.map((result) => (
+              {patientsQuery.data?.map((result: Patient) => (
                 <PatientCard patient={result} key={result.ID} />
               ))}
             </div>
