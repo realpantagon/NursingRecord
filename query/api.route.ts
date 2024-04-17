@@ -1,9 +1,10 @@
 export enum UNPROTECTED_API {
-  LOGIN = "/api/v1/login",
-  PING = "/api/ping",
+	LOGIN = "/api/login",
+	PING = "/api/ping",
 }
 
 export enum PROTECTED_API {
+
   //Auth
   CHECK_AUTH = "/api/v1/check-auth",
   //Patient
