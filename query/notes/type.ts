@@ -19,9 +19,9 @@ export const NoteSchema = z.object({
 
 export const UpsertNoteSchema = z.object({
   ID: z.string().optional(),
-  ward_id: z.string(),
-  field_category_id: z.string(),
-  patient_id: z.string(),
+  ward_id: z.number(),
+  field: z.array(FieldSchema),
+  patient_id: z.number(),
 });
 
 export type Note = z.infer<typeof NoteSchema>;

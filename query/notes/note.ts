@@ -27,10 +27,10 @@ export const useQueryNotesByPatientId = (patientId: string) => {
 
   return query;
 };
-export const useMutationUpsertNote = (body: UpsertNote) => {
+export const useMutationUpsertNote = () => {
   const queryClient = useQueryClient();
   const mutation = useMutation({
-    mutationFn: () =>
+    mutationFn: (body: UpsertNote) =>
       axiosCustom
         .put(PROTECTED_API.UPSERT_NOTE, body)
         .then((response) => response.data.data),

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Appbar from "@/component/Appbar";
 import Searchbar, { SearchType } from "@/component/Searchbar";
 import PatientCard from "@/component/PatientData/PatientCard";
@@ -14,6 +14,7 @@ export default function Search() {
       bed_number: type.code === "BN" ? keyword : "",
       name: type.code === "Name" ? keyword : "",
     };
+
     await patientsQuery.mutateAsync(body);
   };
 
