@@ -10,6 +10,7 @@ import Appbar from "@/component/Appbar";
 import PatientData from "@/component/PatientData/PatientData";
 import PatientHistory from "@/component/PatientData/PatientHistory";
 import { Sidebar } from "primereact/sidebar";
+import HorizontalLinearStepper from "@/component/TestStepper/Stepper"
 
 export default function Form() {
   const [visible, setVisible] = useState<boolean>(false);
@@ -51,7 +52,7 @@ export default function Form() {
       <h1 className="text-center text-3xl m-0 flex-1">กรอกข้อมูล</h1>
       </div>
 
-      <div className="flex flex-col xl:mx-52">
+      {/* <div className="flex flex-col xl:mx-52">
         <PatientData />
         <div className="rounded-lg pt-4 bg-white mx-4 lg:mx-52">
           <TabView>
@@ -72,7 +73,8 @@ export default function Form() {
           </TabPanel>
           </TabView>
         </div>
-      </div>
+      </div> */}
+      <HorizontalLinearStepper/>
     </div>
   );
 }

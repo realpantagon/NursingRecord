@@ -10,7 +10,7 @@ export default function Appbar() {
     <nav className=" border-gray-200 dark:bg-gray-900 z-50 relative">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <a
-          href="/home"
+          href="/search"
           className="flex items-center space-x-3 rtl:space-x-reverse no-underline text-black"
         >
           <img
@@ -63,26 +63,10 @@ export default function Appbar() {
             </li>
             <li>
               <a
-                href="/home"
-                className="block py-2 px-3 text-black font-bold rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent no-underline"
-              >
-                ผู้ป่วยที่ต้องดูแล
-              </a>
-            </li>
-            <li>
-              <a
                 href="/Admin/edittemplate"
                 className="block py-2 px-3 text-black font-bold rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent no-underline"
               >
                 แก้ไขแบบบันทึก
-              </a>
-            </li>
-            <li>
-              <a
-                href="/test"
-                className="block py-2 px-3 text-black font-bold rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent no-underline"
-              >
-                Test
               </a>
             </li>
             <li>
