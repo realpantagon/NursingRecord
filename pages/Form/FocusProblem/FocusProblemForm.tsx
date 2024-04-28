@@ -89,7 +89,7 @@ export default function FocusProblemForm() {
               <textarea
                 ref={supportTextareaRef}
                 className="rounded-xl active:outline-none resize-none max-h-96 overflow-hidden w-full"
-                rows={1}
+                rows={4}
                 value={support}
                 onChange={supportChange}
               />
@@ -98,7 +98,7 @@ export default function FocusProblemForm() {
               <textarea
                 ref={activitiesTextareaRef}
                 className="rounded-xl active:outline-none resize-none max-h-96 overflow-hidden w-full"
-                rows={1}
+                rows={4}
                 value={activities}
                 onChange={activitiesChange}
               />
@@ -107,7 +107,7 @@ export default function FocusProblemForm() {
               <textarea
                 ref={evaluateTextareaRef}
                 className="rounded-xl active:outline-none resize-none max-h-96 overflow-hidden w-full"
-                rows={1}
+                rows={4}
                 value={evaluate}
                 onChange={evaluateChange}
               />
