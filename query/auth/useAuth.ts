@@ -45,7 +45,7 @@ export const useMutationLogin = () => {
     },
     onSuccess: () => {
       showSuccess();
-      window.location.href = "/search";
+      window.location.href = "/home";
     },
     onError: () => showError(),
   });
