@@ -4,7 +4,7 @@ import { Button } from "primereact/button";
 import Link from "next/link";
 import Appbar from "@/component/Appbar";
 import PatientData from "@/component/patientData/PatientData";
-import PatientHistory from "@/component/patientData/PatientHistory";
+import PatientHistory from "@/component/patientData/Focusproblemcard";
 import { Sidebar } from "primereact/sidebar";
 import NDX from "./Ndx";
 import Support from "./Support";

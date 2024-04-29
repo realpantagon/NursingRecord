@@ -2,7 +2,8 @@ import { useState } from "react";
 import Link from "next/link";
 import Appbar from "@/component/Appbar";
 import PatientData from "@/component/patientData/PatientData";
-import PatientHistory from "@/component/patientData/PatientHistory";
+import Focusproblemcard from "@/component/patientData/Focusproblemcard";
+import Focuschartcard from "@/component/patientData/Focuschartcard";
 
 export default function Form() {
   return (
@@ -38,11 +39,11 @@ export default function Form() {
             <h1>Focus Chart</h1>
             <hr />
             <div className="text-sm ml-4">การบันทึกล่าสุด</div>
-            <PatientHistory />
+            <Focuschartcard />
             <hr />
-            <PatientHistory />
-            <PatientHistory />
-            <PatientHistory />
+            <Focuschartcard />
+            <Focuschartcard />
+            <Focuschartcard />
           </div>
         </div>
         <div className="lg:w-5/12 w-11/12 mx-2 bg-violet-100 rounded-md">
@@ -50,11 +51,11 @@ export default function Form() {
             <h1>Focus Problem</h1>
             <hr />
             <div className="text-sm ml-4">การบันทึกล่าสุด</div>
-            <PatientHistory />
+            <Focusproblemcard />
             <hr />
-            <PatientHistory />
-            <PatientHistory />
-            <PatientHistory />
+            <Focusproblemcard />
+            <Focusproblemcard />
+            <Focusproblemcard />
           </div>
         </div>
       </div>
