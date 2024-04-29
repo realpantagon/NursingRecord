@@ -2,47 +2,36 @@ import React, { useState } from "react";
 import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
 import { Dropdown } from "primereact/dropdown";
-
-export interface SearchType {
-  type: string;
-  code: string;
-}
+import { SearchPatientOption } from "@/query/search_patient_opt/type";
 
 interface SearchbarProps {
-  onSearch: (searchType: SearchType, keyword: string) => void;
+  onSearch: (searchPatientOption: SearchPatientOption, keyword: string) => void;
 }
 
 const Searchbar: React.FC<SearchbarProps> = ({ onSearch }) => {
-  const [selectedSearchType, setSelectedSearchType] =
-    useState<SearchType | null>(null);
+  const [searchPatientOption, setSearchPatientOption] =
+    useState<SearchPatientOption>({
+      type: "Admid Number",
+      code: "AN",
+    });
   const [keyword, setKeyword] = useState("");
 
-  const searchtype: SearchType[] = [
-    { type: "ชื่อ ", code: "Name" },
+  const searchOptions: SearchPatientOption[] = [
+    { type: "ชื่อ", code: "Name" },
     { type: "Bed Number", code: "BN" },
     { type: "Admid Number", code: "AN" },
   ];
 
   const handlesearch = () => {
-    if (selectedSearchType) {
-      // console.log({
-      // 	selectedSearchType: selectedSearchType.code,
-      // 	keyword: keyword,
-      // });
-
-      // Call the onSearch prop with the selected search type and keyword
-      onSearch(selectedSearchType, keyword);
-    } else {
-      console.log({ keyword: keyword });
-    }
+    onSearch(searchPatientOption, keyword);
   };
 
   return (
     <div className="p-inputgroup flex-2 max-w-md sm:max-w-xl md:max-w-2xl mx-auto my-4">
       <Dropdown
-        value={selectedSearchType}
-        onChange={(e) => setSelectedSearchType(e.value)}
-        options={searchtype}
+        value={searchPatientOption}
+        onChange={(e) => setSearchPatientOption(e.value)}
+        options={searchOptions}
         optionLabel="type"
         placeholder="ค้นหาจาก"
         className=""

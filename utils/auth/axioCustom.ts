@@ -1,5 +1,6 @@
 "use client";
 import axios, { AxiosInstance, AxiosRequestConfig } from "axios";
+
 const baseAPI = process.env.BACKEND_PROXY_URL;
 const axiosCustom: AxiosInstance = axios.create({
   baseURL: baseAPI,
@@ -9,8 +10,15 @@ const axiosCustom: AxiosInstance = axios.create({
   withCredentials: true,
 } as AxiosRequestConfig);
 
-axiosCustom.interceptors.request.use(async (config) => {
-  return config;
-});
+axiosCustom.interceptors.response.use(
+  (res) => res,
+  async (err) => {
+    const status = err?.response?.status || null;
+    if (status === 401) {
+      window.location.href = "/";
+    }
+    return Promise.reject(err);
+  }
+);
 
 export default axiosCustom;

@@ -10,7 +10,7 @@ import {
   QueryClient,
   QueryClientProvider,
 } from "@tanstack/react-query";
-import { toastRef } from "@/component/toast/toast";
+import { toastRef } from "@/component/toast/Toast";
 import { Toast } from "primereact/toast";
 
 export default function App({ Component, pageProps }: AppProps) {

@@ -2,7 +2,7 @@ import axiosCustom from "@/utils/auth/axioCustom";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { PROTECTED_API, UNPROTECTED_API } from "../api.route";
 import { Login } from "./type";
-import { toastRef } from "@/component/toast/toast";
+import { toastRef } from "@/component/toast/Toast";
 
 export const useQueryCheckAuth = () => {
   const query = useQuery({
@@ -45,7 +45,7 @@ export const useMutationLogin = () => {
     },
     onSuccess: () => {
       showSuccess();
-      window.location.href = "/home";
+      window.location.href = "/Home";
     },
     onError: () => showError(),
   });

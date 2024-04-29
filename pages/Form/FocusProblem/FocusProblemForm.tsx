@@ -1,10 +1,10 @@
 import React, { ChangeEvent, useEffect, useRef, useState } from "react";
 import Appbar from "@/component/Appbar";
-import ConfirmFocus from "@/component/Focus/Confirmfocus";
 import { Accordion, AccordionTab } from "primereact/accordion";
-import PatientData from "@/component/PatientData/PatientData";
+import PatientData from "@/component/patientData/PatientData";
 import { UpsertNote } from "@/query/notes/type";
 import { useMutationUpsertNote } from "@/query/notes/note";
+import ConfirmFocus from "@/component/focus/ConfirmFocus";
 
 export default function FocusProblemForm() {
   const [support, setSupport] = useState("");

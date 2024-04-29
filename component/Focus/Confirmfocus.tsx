@@ -1,6 +1,6 @@
 import React from "react";
 import { ConfirmDialog, confirmDialog } from "primereact/confirmdialog";
-import { toastRef } from "@/component/toast/toast";
+import { toastRef } from "@/component/toast/Toast";
 import { Button } from "primereact/button";
 import { Toast } from "primereact/toast";
 

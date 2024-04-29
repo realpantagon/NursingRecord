@@ -1,14 +1,15 @@
 import React from "react";
 import Appbar from "@/component/Appbar";
-import Searchbar, { SearchType } from "@/component/Searchbar";
-import PatientCard from "@/component/PatientData/PatientCard";
+import Searchbar from "@/component/Searchbar";
+import PatientCard from "@/component/patientData/PatientCard";
 import { useQuerySearchPatients } from "@/query/patients/searchpatient";
 import { Patient, SearchPatient } from "@/query/patients/type";
+import { SearchPatientOption } from "@/query/search_patient_opt/type";
 
 export default function Search() {
   const patientsQuery = useQuerySearchPatients();
 
-  const handleSearch = async (type: SearchType, keyword: string) => {
+  const handleSearch = async (type: SearchPatientOption, keyword: string) => {
     const body: SearchPatient = {
       an: type.code === "AN" ? keyword : "",
       bed_number: type.code === "BN" ? keyword : "",
@@ -18,7 +19,6 @@ export default function Search() {
     await patientsQuery.mutateAsync(body);
   };
 
-  // if (!patientsQuery.data) return;
   return (
     <div className="bg-stone-100 min-h-screen">
       <Appbar />

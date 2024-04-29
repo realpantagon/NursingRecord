@@ -1,12 +1,9 @@
-import Loginpage from './loginpage';
+import Login from "./Login";
 
 export default function Home() {
-
-
-    return (
-        <div>
-            <Loginpage></Loginpage>
-        </div>
-    );
+  return (
+    <div>
+      <Login></Login>
+    </div>
+  );
 }
-
