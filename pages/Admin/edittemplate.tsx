@@ -17,8 +17,6 @@ export default function Template() {
   ];
   const [selectDisease, setSelectDisease] = useState<Disease | null>(null);
 
-  console.log(selectDisease);
-
   const ndx: Disease[] = [
     {
       name: "เสี่ยงต่อการติดเชื้อระบบทางเดินหายใจ ที่สัมพันธ์กับการใช้เครื่องช่วยหายใจ เนื่องจาก ภาวะการหายใจล้มเหลว",
@@ -54,8 +52,6 @@ export default function Template() {
     },
   ];
   const [selectNdx, setSelectNdx] = useState<Disease | null>(null);
-
-  console.log(selectDisease);
 
   const confirmSave = () => {
     confirmDialog({

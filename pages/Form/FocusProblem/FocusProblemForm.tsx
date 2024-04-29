@@ -68,7 +68,6 @@ export default function FocusProblemForm() {
     };
 
     upsertNoteMutation.mutateAsync(upsertNoteBody);
-    console.log("Submitting focus problem:", { support, activities, evaluate });
   };
 
   const clearfocusproblem = () => {

@@ -6,7 +6,7 @@ interface Category {
   key: string;
 }
 
-function Support() {
+export default function Support() {
   const categories: Category[] = [
     { name: "Dx: Respiratory failure", key: "1" },
     { name: "มีไข้ BT > 38.5 องศา", key: "2" },
@@ -61,5 +61,3 @@ function Support() {
     </div>
   );
 }
-
-export default Support;

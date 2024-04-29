@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Dialog } from "primereact/dialog";
 import { InputText } from "primereact/inputtext";
-import { ColorPicker, ColorPickerChangeEvent, ColorPickerRGBType, ColorPickerHSBType } from "primereact/colorpicker";
+import {
+  ColorPicker,
+  ColorPickerChangeEvent,
+  ColorPickerRGBType,
+  ColorPickerHSBType,
+} from "primereact/colorpicker";
 import { Button } from "primereact/button";
 
 interface CreateWardProps {
@@ -21,7 +26,10 @@ const CreateWard: React.FC<CreateWardProps> = ({ visible, onClose }) => {
   }, [visible]);
 
   const handleColorChange = (e: ColorPickerChangeEvent) => {
-    const newColor = e.value as string | ColorPickerRGBType | ColorPickerHSBType;
+    const newColor = e.value as
+      | string
+      | ColorPickerRGBType
+      | ColorPickerHSBType;
     if (typeof newColor === "string") {
       setColor(newColor);
     } else {
@@ -30,20 +38,25 @@ const CreateWard: React.FC<CreateWardProps> = ({ visible, onClose }) => {
   };
 
   const handleConfirm = () => {
-    console.log("Ward Name:", wardName);
-    console.log("Color Code:", color);
-    // Add any additional logic or API calls here
-
-    // Close the dialog
     onClose();
   };
 
   return (
-    <Dialog header="เพิ่มกลุ่มโรค" visible={visible} style={{ width: "80vw" }} onHide={onClose} className="">
+    <Dialog
+      header="เพิ่มกลุ่มโรค"
+      visible={visible}
+      style={{ width: "80vw" }}
+      onHide={onClose}
+      className=""
+    >
       <div className="grid grid-cols-1 gap-4">
         <p>ระบุชื่อกลุ่มโรคและเลือกสี</p>
         <div className="flex">
-          <InputText placeholder="ชื่อกลุ่มโรค" value={wardName} onChange={(e) => setWardName(e.target.value)} />
+          <InputText
+            placeholder="ชื่อกลุ่มโรค"
+            value={wardName}
+            onChange={(e) => setWardName(e.target.value)}
+          />
           <div className="ml-4 mt-2">
             <ColorPicker value={color} onChange={handleColorChange} />
           </div>
