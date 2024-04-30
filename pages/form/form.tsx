@@ -31,7 +31,7 @@ export default function Form() {
               เพิ่ม Focus Problem
             </div>
           </Link>
-          <Link href="../Form/Form" className="no-underline text-white w-full ">
+          <Link href="../Form/Record" className="no-underline text-white w-full ">
             <div className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-md px-5 py-4 text-center me-2 mb-2 w-full shadow-sm">
               เพิ่มแบบบันทึกทางการพยาบาล
             </div>
