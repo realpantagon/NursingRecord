@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 
-function PatientHistory() {
+function Focuschartcard() {
   return (
     <div>
     <div className="rounded-md bg-stone-100  hover:bg-gray-300 hover:shadow-lg my-2 shadow-md relative">
@@ -17,4 +17,4 @@ function PatientHistory() {
   );
 }
 
-export default PatientHistory;
+export default Focuschartcard;
