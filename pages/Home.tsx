@@ -28,8 +28,9 @@ export default function Home() {
           <WardCard/>
           <WardCard/>
           <WardCard/>
+          <WardCard/>
            <div
-            className="rounded-md bg-white h-56 hover:bg-gray-300 hover:shadow-lg shadow-md flex items-center justify-center"
+            className="rounded-md bg-white h-52 hover:bg-gray-300 hover:shadow-lg shadow-md flex items-center justify-center"
             onClick={openCreateWardDialog}
           >
             <i
