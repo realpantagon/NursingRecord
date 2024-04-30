@@ -9,7 +9,7 @@ interface PatientCardProps {
 const PatientCard: React.FC<PatientCardProps> = ({ patient }) => {
   return (
     <div className="rounded-md bg-white h-full hover:bg-gray-300 hover:shadow-lg shadow-md">
-      <Link href="../form/Record" className="no-underline text-black">
+      <Link href="../Record" className="no-underline text-black">
         <div className="bg-blue-600 w-full h-6 rounded-t-lg"></div>
         <div className="mx-8 py-4">
           <div className="">ชื่อ: {patient.first_name}</div>
