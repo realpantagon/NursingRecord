@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
 import { Dropdown } from "primereact/dropdown";
-import { SearchPatientOption } from "@/query/search_patient_opt/type";
+import { SearchPatientOption } from "@/types/search_patient_opt";
 
 interface SearchbarProps {
   onSearch: (searchPatientOption: SearchPatientOption, keyword: string) => void;

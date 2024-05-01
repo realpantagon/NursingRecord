@@ -2,8 +2,8 @@
 import Image from "next/image";
 import cpecmu from "../../public/cpecmu.png";
 import React, { useState } from "react";
-import { useMutationLogin } from "@/query/auth/auth";
 import { useRouter } from "next/navigation";
+import { useMutationLogin } from "@/query/auth";
 
 export default function SignIn() {
   const [password, setPassword] = useState("");

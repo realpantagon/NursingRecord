@@ -1,8 +1,8 @@
 import axiosCustom from "@/utils/auth/axioCustom";
 import { useMutation, useQuery } from "@tanstack/react-query";
-import { PROTECTED_API, UNPROTECTED_API } from "../api.route";
-import { Login } from "./type";
 import { toastRef } from "@/app/components/toast/Toast";
+import { PROTECTED_API, UNPROTECTED_API } from "./api.route";
+import { Login } from "@/types/auth";
 export const useQueryCheckAuth = () => {
   const query = useQuery({
     queryKey: ["checkAuth"],

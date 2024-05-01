@@ -1,11 +1,12 @@
 "use client";
 import React from "react";
-import { useQuerySearchPatients } from "@/query/patients/searchpatient";
-import { Patient, SearchPatient } from "@/query/patients/type";
-import { SearchPatientOption } from "@/query/search_patient_opt/type";
+
 import Appbar from "../components/Appbar";
 import Searchbar from "../components/Searchbar";
 import PatientCard from "../components/patient/PatientCard";
+import { useQuerySearchPatients } from "@/query/searchpatient";
+import { SearchPatientOption } from "@/types/search_patient_opt";
+import { Patient, SearchPatient } from "@/types/searchPatient";
 
 export default function Search() {
   const patientsQuery = useQuerySearchPatients();

@@ -1,11 +1,11 @@
 "use client";
 import React, { ChangeEvent, useEffect, useRef, useState } from "react";
 import { Accordion, AccordionTab } from "primereact/accordion";
-import { UpsertNote } from "@/query/notes/type";
-import { useMutationUpsertNote } from "@/query/notes/note";
 import Appbar from "../../../components/Appbar";
 import PatientData from "../../../components/patient/PatientData";
 import ConfirmFocus from "../../../components/focus/ConfirmFocus";
+import { useMutationUpsertNote } from "@/query/note";
+import { UpsertNote } from "@/types/note";
 
 export default function FocusProblemForm() {
   const [support, setSupport] = useState("");
