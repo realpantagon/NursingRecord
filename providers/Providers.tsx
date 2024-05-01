@@ -5,12 +5,11 @@ import {
   QueryClientProvider,
 } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-
-export const TanstackProvider = ({
-  children,
-}: {
-  children: React.ReactNode;
-}) => {
+import "primereact/resources/themes/lara-light-blue/theme.css";
+import "primeicons/primeicons.css";
+import { Toast } from "primereact/toast";
+import { toastRef } from "@/app/components/toast/Toast";
+export const Providers = ({ children }: { children: React.ReactNode }) => {
   const client = new QueryClient({
     queryCache: new QueryCache(),
     defaultOptions: {
@@ -21,6 +20,7 @@ export const TanstackProvider = ({
   });
   return (
     <QueryClientProvider client={client}>
+      <Toast ref={toastRef} />
       {children}
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>

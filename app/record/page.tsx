@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+"use client";
+import React from "react";
 import Link from "next/link";
-import Appbar from "@/component/Appbar";
-import PatientData from "@/component/patientData/PatientData";
-import Focusproblemcard from "@/app/components/patient/FocusProblemCard";
-import Focuschartcard from "@/app/components/patient/FocusChartCard";
 import { TabView, TabPanel } from "primereact/tabview";
+import PatientData from "../components/patient/PatientData";
+import Appbar from "../components/Appbar";
+import FocusChartCard from "../components/focus/FocusChartCard";
+import FocusProblemCard from "../components/focus/FocusProblemCard";
 
 export default function Form() {
   return (
@@ -16,7 +17,7 @@ export default function Form() {
             <PatientData />
 
             <Link
-              href="../form/focusProblem/FocusProblemForm"
+              href="/record/focusProblem/form"
               className="no-underline text-white w-full "
             >
               <div className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-md px-5 py-4 text-center me-2 mb-4 w-full shadow-sm">
@@ -24,7 +25,7 @@ export default function Form() {
               </div>
             </Link>
             <Link
-              href="../form/focusChart/Form"
+              href="/record/focusChart/form"
               className="no-underline text-white w-full "
             >
               <div className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-md px-5 py-4 text-center me-2 mb-2 w-full shadow-sm">
@@ -38,11 +39,11 @@ export default function Form() {
             <h1>Focus Chart</h1>
             <hr />
             <div className="text-sm ml-4">การบันทึกล่าสุด</div>
-            <Focuschartcard />
+            <FocusChartCard />
             <hr />
-            <Focuschartcard />
-            <Focuschartcard />
-            <Focuschartcard />
+            <FocusChartCard />
+            <FocusChartCard />
+            <FocusChartCard />
           </div>
         </div>
         <div className="lg:w-5/12 w-11/12 mx-2 bg-violet-100 rounded-md">
@@ -64,18 +65,18 @@ export default function Form() {
                 {/* <h1 className="col-span-full">Focus Chart</h1>
                 <hr className="col-span-full" />
                 <div className="text-sm ml-4">การบันทึกล่าสุด</div> */}
-                <Focuschartcard />
-                <Focuschartcard />
-                <Focuschartcard />
-                <Focuschartcard />
-                <Focuschartcard />
-                <Focuschartcard />
-                <Focuschartcard />
-                <Focuschartcard />
-                <Focuschartcard />
-                <Focuschartcard />
-                <Focuschartcard />
-                <Focuschartcard />
+                <FocusChartCard />
+                <FocusChartCard />
+                <FocusChartCard />
+                <FocusChartCard />
+                <FocusChartCard />
+                <FocusChartCard />
+                <FocusChartCard />
+                <FocusChartCard />
+                <FocusChartCard />
+                <FocusChartCard />
+                <FocusChartCard />
+                <FocusChartCard />
               </div>
             </TabPanel>
             <TabPanel header="FocusProblem">
@@ -83,18 +84,18 @@ export default function Form() {
                 {/* <h1 className="col-span-full">Focus Problem</h1> */}
                 {/* <hr className="col-span-full" /> */}
                 {/* <div className="text-sm ml-4">การบันทึกล่าสุด</div> */}
-                <Focusproblemcard />
-                <Focusproblemcard />
-                <Focusproblemcard />
-                <Focusproblemcard />
-                <Focusproblemcard />
-                <Focusproblemcard />
-                <Focusproblemcard />
-                <Focusproblemcard />
-                <Focusproblemcard />
-                <Focusproblemcard />
-                <Focusproblemcard />
-                <Focusproblemcard />
+                <FocusProblemCard />
+                <FocusProblemCard />
+                <FocusProblemCard />
+                <FocusProblemCard />
+                <FocusProblemCard />
+                <FocusProblemCard />
+                <FocusProblemCard />
+                <FocusProblemCard />
+                <FocusProblemCard />
+                <FocusProblemCard />
+                <FocusProblemCard />
+                <FocusProblemCard />
               </div>
             </TabPanel>
             {/* <TabPanel header="Filter">

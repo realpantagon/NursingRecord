@@ -1,4 +1,4 @@
-import { TanstackProvider } from "@/providers/TanstackProvider";
+import { Providers } from "@/providers/Providers";
 import React from "react";
 import "@/styles/globals.css";
 
@@ -15,9 +15,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <TanstackProvider>
+        <Providers>
           <div>{children}</div>
-        </TanstackProvider>
+        </Providers>
       </body>
     </html>
   );

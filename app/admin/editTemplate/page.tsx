@@ -1,9 +1,10 @@
+"use client";
 import React, { useState, useRef } from "react";
 import { Accordion, AccordionTab } from "primereact/accordion";
 import { Dropdown, DropdownChangeEvent } from "primereact/dropdown";
 import { ConfirmDialog, confirmDialog } from "primereact/confirmdialog";
 import { Toast } from "primereact/toast";
-import Appbar from "../components/Appbar";
+import Appbar from "../../components/Appbar";
 
 interface Disease {
   name: string;

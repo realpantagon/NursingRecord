@@ -3,11 +3,12 @@ import Image from "next/image";
 import cpecmu from "../../public/cpecmu.png";
 import React, { useState } from "react";
 import { useMutationLogin } from "@/query/auth/auth";
-// import { redirect, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 export default function SignIn() {
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
+  const router = useRouter();
   const loginMutation = useMutationLogin();
   const handleLogin = async (e: any) => {
     e.preventDefault();
@@ -16,10 +17,8 @@ export default function SignIn() {
       Username: username,
       Password: password,
     });
-
     if (data) {
-      window.location.href = "/ward";
-      // redirect("/ward");
+      router.push("/ward");
     }
   };
 

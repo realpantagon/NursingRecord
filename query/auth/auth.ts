@@ -3,7 +3,6 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import { PROTECTED_API, UNPROTECTED_API } from "../api.route";
 import { Login } from "./type";
 import { toastRef } from "@/app/components/toast/Toast";
-
 export const useQueryCheckAuth = () => {
   const query = useQuery({
     queryKey: ["checkAuth"],
@@ -18,30 +17,27 @@ export const useQueryCheckAuth = () => {
 
 export const useMutationLogin = () => {
   const showSuccess = () => {
-    if (toastRef.current) {
-      toastRef.current?.show({
-        severity: "success",
-        summary: "Success",
-        detail: "Login Successful",
-        life: 3000,
-      });
-    }
+    toastRef.current?.show({
+      severity: "success",
+      summary: "Success",
+      detail: "Login Successful",
+      life: 3000,
+    });
   };
 
   const showError = () => {
-    if (toastRef.current) {
-      toastRef.current?.show({
-        severity: "error",
-        summary: "Error",
-        detail: "Login Fail",
-        life: 3000,
-      });
-    }
+    toastRef.current?.show({
+      severity: "error",
+      summary: "Error",
+      detail: "Login Fail",
+      life: 3000,
+    });
   };
+
   const mutation = useMutation({
     mutationFn: async (body: Login) => {
       const response = await axiosCustom.post(UNPROTECTED_API.LOGIN, body);
-      return response.data.data;
+      return response.data;
     },
     onSuccess: () => {
       showSuccess();
@@ -54,35 +50,30 @@ export const useMutationLogin = () => {
 
 export const useMutationLogout = () => {
   const showSuccess = () => {
-    if (toastRef.current) {
-      toastRef.current?.show({
-        severity: "success",
-        summary: "Success",
-        detail: "Logout Successful",
-        life: 3000,
-      });
-    }
+    toastRef.current?.show({
+      severity: "success",
+      summary: "Success",
+      detail: "Logout Successful",
+      life: 3000,
+    });
   };
 
   const showError = () => {
-    if (toastRef.current) {
-      toastRef.current?.show({
-        severity: "error",
-        summary: "Error",
-        detail: "Logout Fail",
-        life: 3000,
-      });
-    }
+    toastRef.current?.show({
+      severity: "error",
+      summary: "Error",
+      detail: "Logout Fail",
+      life: 3000,
+    });
   };
 
   const mutation = useMutation({
     mutationFn: async () => {
       const response = await axiosCustom.post(UNPROTECTED_API.LOGOUT);
-      return response.data.data;
+      return response.data;
     },
     onSuccess: () => {
       showSuccess();
-      window.location.href = "/";
     },
     onError: () => showError(),
   });

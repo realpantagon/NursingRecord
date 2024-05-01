@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import { useQuerySearchPatients } from "@/query/patients/searchpatient";
 import { Patient, SearchPatient } from "@/query/patients/type";

@@ -1,6 +1,7 @@
+"use client";
 import React from "react";
-import Appbar from "@/component/Appbar";
 import NurseList from "@/app/components/nurse/NurseList";
+import Appbar from "../../components/Appbar";
 
 function EditRoles() {
   return (
