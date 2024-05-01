@@ -1,9 +1,9 @@
 import axiosCustom from "@/utils/auth/axioCustom";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { PROTECTED_API } from "../api.route";
-import { Ndx, UpsertNdx } from "./type";
+import { UpsertNdx } from "./type";
 
-export const useQueryGetNdxs = () => {
+export const useQueryNdxs = () => {
   const query = useQuery({
     queryKey: ["ndxs"],
     queryFn: () =>

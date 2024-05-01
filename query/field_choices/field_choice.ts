@@ -1,11 +1,11 @@
 import axiosCustom from "@/utils/auth/axioCustom";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { PROTECTED_API } from "../api.route";
-import { FieldChoice, UpsertFieldChoice } from "./type";
+import { UpsertFieldChoice } from "./type";
 
-export const useQueryGetFieldChoiceByNdx = (ndxId: string) => {
+export const useQueryGetFieldChoicesByNdx = (ndxId: string) => {
   const query = useQuery({
-    queryKey: ["fieldChoices"],
+    queryKey: ["fieldChoices", ndxId],
     queryFn: () =>
       axiosCustom
         .get(PROTECTED_API.GET_FIELD_CHOICES_BY_NDX.replace("{ndx_id}", ndxId))

@@ -1,7 +1,7 @@
 import axiosCustom from "@/utils/auth/axioCustom";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { PROTECTED_API } from "../api.route";
-import { FieldCategory, UpsertFieldCategory } from "./type";
+import { UpsertFieldCategory } from "./type";
 
 export const useQueryGetFieldCategories = () => {
   const query = useQuery({

@@ -1,25 +1,26 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import axiosCustom from "@/utils/auth/axioCustom";
 import { PROTECTED_API } from "../api.route";
-import { Record, UpsertRecord } from "./type";
+import { UpsertRecord } from "./type";
 
 export const useQueryRecord = (id: string) => {
   const query = useQuery({
     queryKey: ["record"],
     queryFn: () =>
       axiosCustom
-        .get<Record>(PROTECTED_API.GET_RECORDS.replace("id", id))
+        .get(PROTECTED_API.GET_RECORDS.replace("id", id))
         .then((response) => response.data.data),
   });
 
   return query;
 };
+
 export const useQueryRecordsByPatientId = (patientId: string) => {
   const query = useQuery({
     queryKey: ["records"],
     queryFn: () =>
       axiosCustom
-        .get<Record[]>(
+        .get(
           PROTECTED_API.GET_RECORDS_BY_PATIENT.replace("patient_id", patientId)
         )
         .then((response) => response.data.data),

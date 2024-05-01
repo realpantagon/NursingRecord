@@ -1,7 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import axiosCustom from "@/utils/auth/axioCustom";
 import { PROTECTED_API } from "../api.route";
-import { UpsertWard, Ward } from "./type";
+import { UpsertWard } from "./type";
 
 export const useQueryWards = () => {
   const query = useQuery({
@@ -24,19 +24,22 @@ export const useMutationUpsertWard = (body: UpsertWard) => {
         .put(PROTECTED_API.UPSERT_WARD, body)
         .then((response) => response.data.data),
     onSuccess: async () =>
-      await queryClient.invalidateQueries({ queryKey: ["record"] }),
+      await queryClient.invalidateQueries({ queryKey: ["wards"] }),
   });
 
   return mutation;
 };
 
 export const useMutationDeleteWard = (id: string) => {
+  const queryClient = useQueryClient();
   const mutation = useMutation({
     mutationKey: ["deleteWard"],
     mutationFn: () =>
       axiosCustom
         .get(PROTECTED_API.DELETE_WARD.replace("id", id))
         .then((response) => response.data.data),
+    onSuccess: async () =>
+      await queryClient.invalidateQueries({ queryKey: ["wards"] }),
   });
 
   return mutation;

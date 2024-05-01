@@ -1,7 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import axiosCustom from "@/utils/auth/axioCustom";
 import { PROTECTED_API } from "../api.route";
-import { Note, UpsertNote } from "./type";
+import { UpsertNote } from "./type";
 
 export const useQueryNote = (id: string) => {
   const query = useQuery({
