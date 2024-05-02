@@ -3,14 +3,15 @@
 const API = process.env.BACKEND_PROXY_URL;
 
 const nextConfig = {
-  async rewrites() {
-    return [
-      {
-        source: "/api/:path*",
-        destination: `${API}/api/:path*`,
-      },
-    ];
-  },
+	reactStrictMode: true,
+	async rewrites() {
+		return [
+			{
+				source: "/api/:path*",
+				destination: `${API}/:path*`,
+			},
+		];
+	},
 };
 
 module.exports = nextConfig;
