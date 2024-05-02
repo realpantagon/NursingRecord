@@ -1,4 +1,4 @@
-import { useMutationLogout } from "@/query/auth/auth";
+import { useMutationLogout } from "@/query/auth";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 

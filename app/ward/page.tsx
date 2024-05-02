@@ -1,12 +1,15 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "primeicons/primeicons.css";
 import WardCard from "../components/ward/WardCard";
 import Appbar from "../components/Appbar";
 import CreateWard from "../components/ward/CreateWard";
+import { useQueryWards } from "@/query/ward";
 
 export default function Home() {
   const [isCreateWardDialogOpen, setCreateWardDialogOpen] = useState(false);
+
+  const wards = useQueryWards();
 
   const openCreateWardDialog = () => {
     setCreateWardDialogOpen(true);
@@ -16,6 +19,8 @@ export default function Home() {
     setCreateWardDialogOpen(false);
   };
 
+  if (wards.isLoading) return;
+  console.log(wards.data);
   return (
     <div className="bg-stone-100  min-h-screen">
       <Appbar />
