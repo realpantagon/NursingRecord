@@ -1,32 +1,37 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import axiosCustom from "@/utils/auth/axioCustom";
+import axiosCustom from "@/utils/axioCustom";
 import { PROTECTED_API } from "./api.route";
 import { UpsertNote } from "@/types/note";
 
-export const useQueryNote = (id: string) => {
+export const useQueryNote = (id: number) => {
   const query = useQuery({
     queryKey: ["note"],
     queryFn: () =>
       axiosCustom
-        .get(PROTECTED_API.GET_NOTES.replace("id", id))
+        .get(PROTECTED_API.GET_NOTES.replace("id", id.toString()))
         .then((response) => response.data.data),
   });
 
   return query;
 };
-export const useQueryNotesByPatientId = (patientId: string) => {
+
+export const useQueryNotesByPatientId = (patientId: number) => {
   const query = useQuery({
     queryKey: ["notes"],
     queryFn: () =>
       axiosCustom
         .get(
-          PROTECTED_API.GET_NOTES_BY_PATIENT.replace("patient_id", patientId)
+          PROTECTED_API.GET_NOTES_BY_PATIENT.replace(
+            "{patient_id}",
+            patientId.toString()
+          )
         )
         .then((response) => response.data.data),
   });
 
   return query;
 };
+
 export const useMutationUpsertNote = () => {
   const queryClient = useQueryClient();
   const mutation = useMutation({
@@ -41,12 +46,12 @@ export const useMutationUpsertNote = () => {
   return mutation;
 };
 
-export const useMutationDeleteNote = (id: string) => {
+export const useMutationDeleteNote = (id: number) => {
   const queryClient = useQueryClient();
   const mutation = useMutation({
     mutationFn: () =>
       axiosCustom
-        .delete(PROTECTED_API.DELETE_NOTE.replace("id", id))
+        .delete(PROTECTED_API.DELETE_NOTE.replace("id", id.toString()))
         .then((response) => response.data.data),
     onSuccess: async () =>
       await queryClient.invalidateQueries({ queryKey: ["note"] }),

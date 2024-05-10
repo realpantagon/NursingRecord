@@ -1,13 +1,25 @@
 "use client";
-import React from "react";
+import React, { useContext } from "react";
 import Link from "next/link";
 import { TabView, TabPanel } from "primereact/tabview";
 import PatientData from "../components/patient/PatientData";
 import Appbar from "../components/Appbar";
 import FocusChartCard from "../components/focus/FocusChartCard";
 import FocusProblemCard from "../components/focus/FocusProblemCard";
+import { useQueryRecordsByPatientId } from "@/query/record";
+import { useQueryNotesByPatientId } from "@/query/note";
+import { PatientIdContext } from "@/providers/ContextProvider";
+import { Record } from "@/types/focusChart";
+import { Note } from "@/types/note";
 
 export default function Form() {
+  const { patientId } = useContext(PatientIdContext);
+  const focusChartQuery = useQueryRecordsByPatientId(patientId);
+  const focusProblemQuery = useQueryNotesByPatientId(patientId);
+
+  const focusCharts: Record[] = focusChartQuery.data;
+  const focusProblems: Note[] = focusProblemQuery.data;
+  if (focusChartQuery.isLoading || focusProblemQuery.isLoading) return;
   return (
     <div className="bg-stone-100 min-h-screen w-screen">
       <Appbar />
@@ -34,73 +46,25 @@ export default function Form() {
             </Link>
           </div>
         </div>
-        {/* <div className="lg:w-5/12 w-11/12 mx-2 bg-sky-100 rounded-md">
-          <div className="mx-4">
-            <h1>Focus Chart</h1>
-            <hr />
-            <div className="text-sm ml-4">การบันทึกล่าสุด</div>
-            <FocusChartCard />
-            <hr />
-            <FocusChartCard />
-            <FocusChartCard />
-            <FocusChartCard />
-          </div>
-        </div>
-        <div className="lg:w-5/12 w-11/12 mx-2 bg-violet-100 rounded-md">
-          <div className="mx-4">
-            <h1>Focus Problem</h1>
-            <hr />
-            <div className="text-sm ml-4">การบันทึกล่าสุด</div>
-            <Focusproblemcard />
-            <hr />
-            <Focusproblemcard />
-            <Focusproblemcard />
-            <Focusproblemcard />
-          </div>
-        </div> */}
         <div className="lg:w-10/12 w-11/12 mx-2 bg-sky-100 rounded-md">
           <TabView>
             <TabPanel header="FocusChart">
               <div className="m-2 grid md:grid-cols-4 gap-2 grid-cols-1">
-                {/* <h1 className="col-span-full">Focus Chart</h1>
-                <hr className="col-span-full" />
-                <div className="text-sm ml-4">การบันทึกล่าสุด</div> */}
-                <FocusChartCard />
-                <FocusChartCard />
-                <FocusChartCard />
-                <FocusChartCard />
-                <FocusChartCard />
-                <FocusChartCard />
-                <FocusChartCard />
-                <FocusChartCard />
-                <FocusChartCard />
-                <FocusChartCard />
-                <FocusChartCard />
-                <FocusChartCard />
+                {focusCharts?.map((focusChart) => (
+                  <FocusChartCard key={focusChart.ID} focusChart={focusChart} />
+                ))}
               </div>
             </TabPanel>
             <TabPanel header="FocusProblem">
               <div className="m-2 grid md:grid-cols-4 gap-2 grid-cols-1">
-                {/* <h1 className="col-span-full">Focus Problem</h1> */}
-                {/* <hr className="col-span-full" /> */}
-                {/* <div className="text-sm ml-4">การบันทึกล่าสุด</div> */}
-                <FocusProblemCard />
-                <FocusProblemCard />
-                <FocusProblemCard />
-                <FocusProblemCard />
-                <FocusProblemCard />
-                <FocusProblemCard />
-                <FocusProblemCard />
-                <FocusProblemCard />
-                <FocusProblemCard />
-                <FocusProblemCard />
-                <FocusProblemCard />
-                <FocusProblemCard />
+                {focusProblems?.map((focusProblem) => (
+                  <FocusProblemCard
+                    key={focusProblem.ID}
+                    focusProblem={focusProblem}
+                  />
+                ))}
               </div>
             </TabPanel>
-            {/* <TabPanel header="Filter">
-              <p className="m-0"></p>
-            </TabPanel> */}
           </TabView>
         </div>
       </div>

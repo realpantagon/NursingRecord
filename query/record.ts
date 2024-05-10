@@ -1,27 +1,30 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import axiosCustom from "@/utils/auth/axioCustom";
+import axiosCustom from "@/utils/axioCustom";
 import { PROTECTED_API } from "./api.route";
-import { UpsertRecord } from "@/types/record";
+import { UpsertRecord } from "@/types/focusChart";
 
-export const useQueryRecord = (id: string) => {
+export const useQueryRecord = (id: number) => {
   const query = useQuery({
     queryKey: ["record"],
     queryFn: () =>
       axiosCustom
-        .get(PROTECTED_API.GET_RECORDS.replace("id", id))
+        .get(PROTECTED_API.GET_RECORDS.replace("id", id.toString()))
         .then((response) => response.data.data),
   });
 
   return query;
 };
 
-export const useQueryRecordsByPatientId = (patientId: string) => {
+export const useQueryRecordsByPatientId = (patientId: number) => {
   const query = useQuery({
     queryKey: ["records"],
     queryFn: () =>
       axiosCustom
         .get(
-          PROTECTED_API.GET_RECORDS_BY_PATIENT.replace("patient_id", patientId)
+          PROTECTED_API.GET_RECORDS_BY_PATIENT.replace(
+            "{patient_id}",
+            patientId.toString()
+          )
         )
         .then((response) => response.data.data),
   });
@@ -43,12 +46,12 @@ export const useMutationUpsertRecord = (body: UpsertRecord) => {
   return mutation;
 };
 
-export const useMutationDeleteRecord = (id: string) => {
+export const useMutationDeleteRecord = (id: number) => {
   const queryClient = useQueryClient();
   const mutation = useMutation({
     mutationFn: () =>
       axiosCustom
-        .delete(PROTECTED_API.DELETE_RECORD.replace("id", id))
+        .delete(PROTECTED_API.DELETE_RECORD.replace("id", id.toString()))
         .then((response) => response.data.data),
     onSuccess: async () =>
       await queryClient.invalidateQueries({ queryKey: ["record"] }),

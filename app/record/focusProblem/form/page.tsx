@@ -13,11 +13,12 @@ import ConfirmFocus from "../../../components/focus/ConfirmFocus";
 import { useMutationUpsertNote } from "@/query/note";
 import { UpsertNote } from "@/types/note";
 import { PatientIdContext, WardIdContext } from "@/providers/ContextProvider";
+import { useQueryGetFieldCategories } from "@/query/field_category";
+import { FieldCategory } from "@/types/field_category";
 
 export default function FocusProblemForm() {
   const { wardId } = useContext(WardIdContext);
   const { patientId } = useContext(PatientIdContext);
-  console.log(wardId, patientId);
   const [support, setSupport] = useState("");
   const [activities, setActivities] = useState("");
   const [evaluate, setEvaluate] = useState("");
@@ -25,6 +26,18 @@ export default function FocusProblemForm() {
   const activitiesTextareaRef = useRef<HTMLTextAreaElement>(null);
   const evaluateTextareaRef = useRef<HTMLTextAreaElement>(null);
   const upsertNoteMutation = useMutationUpsertNote();
+
+  const fieldCategoryQuery = useQueryGetFieldCategories();
+  const fieldCategory: FieldCategory[] = fieldCategoryQuery.data;
+  const ACategory = fieldCategory?.find(
+    (category) => category.field_type === "A_TEXT"
+  );
+  const ECategory = fieldCategory?.find((category) => {
+    category.field_type === "E_TEXT";
+  });
+  const SCategory = fieldCategory?.find(
+    (category) => category.field_type === "S_TEXT"
+  );
 
   const supportChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
     setSupport(e.target.value);
@@ -60,22 +73,23 @@ export default function FocusProblemForm() {
   const submitFocusProblem = () => {
     const upsertNoteBody: UpsertNote = {
       ward_id: wardId,
-      field: [
-        {
-          field_category_id: 4,
-          field_data: support,
-        },
-        {
-          field_category_id: 2,
-          field_data: activities,
-        },
-        {
-          field_category_id: 1,
-          field_data: evaluate,
-        },
-      ],
+      fields: [],
       patient_id: patientId,
     };
+
+    const categoriesData = [
+      { category: ACategory, data: activities },
+      { category: ECategory, data: evaluate },
+      { category: SCategory, data: support },
+    ];
+    categoriesData.forEach(({ category, data }) => {
+      if (data && category) {
+        upsertNoteBody.fields.push({
+          field_category_id: category.ID,
+          field_data: data,
+        });
+      }
+    });
 
     upsertNoteMutation.mutateAsync(upsertNoteBody);
   };
@@ -85,6 +99,8 @@ export default function FocusProblemForm() {
     setActivities("");
     setEvaluate("");
   };
+
+  if (fieldCategoryQuery.isLoading) return;
 
   return (
     <div className="bg-stone-100 h-full">

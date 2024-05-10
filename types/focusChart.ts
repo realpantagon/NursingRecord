@@ -9,8 +9,8 @@ export const RecordSchema = z.object({
   ward_id: z.string(),
   fields: z.array(FieldSchema),
   patient_id: z.string(),
-  created_at: z.string().datetime(),
-  updated_at: z.string().datetime(),
+  create_at: z.string().datetime(),
+  update_at: z.string().datetime(),
 });
 
 export const UpsertRecordSchema = z.object({

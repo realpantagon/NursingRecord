@@ -1,5 +1,5 @@
 import { UpsertFieldChoice } from "@/types/field_choice";
-import axiosCustom from "@/utils/auth/axioCustom";
+import axiosCustom from "@/utils/axioCustom";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { PROTECTED_API } from "./api.route";
 

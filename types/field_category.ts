@@ -1,15 +1,15 @@
 import { z } from "zod";
 
 export const FieldCategorySchema = z.object({
-  ID: z.string(),
-  FieldType: z.string(),
-  IsActive: z.boolean(),
+  ID: z.number(),
+  field_type: z.string(),
+  isActive: z.boolean(),
 });
 
 export const UpsertFieldCategorySchema = z.object({
-  ID: z.string().optional(),
-  FieldType: z.string(),
-  IsActive: z.boolean(),
+  ID: z.number().optional(),
+  field_type: z.string(),
+  is_active: z.boolean(),
 });
 
 export type FieldCategory = z.infer<typeof FieldCategorySchema>;
