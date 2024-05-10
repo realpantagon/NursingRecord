@@ -10,8 +10,8 @@ import WardCard from "../components/ward/WardCard";
 export default function Home() {
   const [isCreateWardDialogOpen, setCreateWardDialogOpen] = useState(false);
 
-  const queryWards = useQueryWards();
-  const wards: Ward[] = queryWards.data;
+  const wardsQuery = useQueryWards();
+  const wards: Ward[] = wardsQuery.data;
 
   const openCreateWardDialog = () => {
     setCreateWardDialogOpen(true);
@@ -21,7 +21,7 @@ export default function Home() {
     setCreateWardDialogOpen(false);
   };
 
-  if (queryWards.isLoading) return;
+  if (wardsQuery.isLoading) return;
 
   return (
     <div className="bg-stone-100  min-h-screen">
@@ -30,7 +30,7 @@ export default function Home() {
       <div className="xl:mx-52">
         <div className=" h-full gap-2 rounded-md px-4 py-4 grid lg:grid-cols-4 md:grid-cols-2 items-center ">
           {wards.map((ward) => (
-            <WardCard key={ward.ID} ID={ward.ID} group={ward.group} />
+            <WardCard key={ward.ID} ward={ward} />
           ))}
           <div
             className="rounded-md bg-white h-52 hover:bg-gray-300 hover:shadow-lg shadow-md flex items-center justify-center"

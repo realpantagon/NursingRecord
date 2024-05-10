@@ -1,17 +1,26 @@
 "use client";
-import React, { ChangeEvent, useEffect, useRef, useState } from "react";
+import React, {
+  ChangeEvent,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import { Accordion, AccordionTab } from "primereact/accordion";
 import Appbar from "../../../components/Appbar";
 import PatientData from "../../../components/patient/PatientData";
 import ConfirmFocus from "../../../components/focus/ConfirmFocus";
 import { useMutationUpsertNote } from "@/query/note";
 import { UpsertNote } from "@/types/note";
+import { PatientIdContext, WardIdContext } from "@/providers/ContextProvider";
 
 export default function FocusProblemForm() {
+  const { wardId } = useContext(WardIdContext);
+  const { patientId } = useContext(PatientIdContext);
+  console.log(wardId, patientId);
   const [support, setSupport] = useState("");
   const [activities, setActivities] = useState("");
   const [evaluate, setEvaluate] = useState("");
-
   const supportTextareaRef = useRef<HTMLTextAreaElement>(null);
   const activitiesTextareaRef = useRef<HTMLTextAreaElement>(null);
   const evaluateTextareaRef = useRef<HTMLTextAreaElement>(null);
@@ -50,7 +59,7 @@ export default function FocusProblemForm() {
 
   const submitFocusProblem = () => {
     const upsertNoteBody: UpsertNote = {
-      ward_id: 1,
+      ward_id: wardId,
       field: [
         {
           field_category_id: 4,
@@ -65,7 +74,7 @@ export default function FocusProblemForm() {
           field_data: evaluate,
         },
       ],
-      patient_id: 1,
+      patient_id: patientId,
     };
 
     upsertNoteMutation.mutateAsync(upsertNoteBody);

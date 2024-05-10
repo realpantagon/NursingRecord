@@ -1,5 +1,5 @@
 "use client";
-import React, { useContext } from "react";
+import React from "react";
 
 import Appbar from "../components/Appbar";
 import Searchbar from "../components/Searchbar";
@@ -7,10 +7,8 @@ import PatientCard from "../components/patient/PatientCard";
 import { useQuerySearchPatients } from "@/query/searchpatient";
 import { SearchPatientOption } from "@/types/search_patient_opt";
 import { Patient, SearchPatient } from "@/types/searchPatient";
-import { WardIdContext } from "@/providers/ContextProvider";
 
 export default function Search() {
-  const { wardId } = useContext(WardIdContext);
   const patientsQuery = useQuerySearchPatients();
 
   const handleSearch = async (type: SearchPatientOption, keyword: string) => {
@@ -32,8 +30,8 @@ export default function Search() {
           <Searchbar onSearch={handleSearch} />
           <div className="xl:mx-52">
             <div className=" h-full gap-2 rounded-md px-4 py-4 grid lg:grid-cols-3 md:grid-cols-2 items-center ">
-              {patientsQuery.data?.map((result: Patient) => (
-                <PatientCard patient={result} key={result.ID} />
+              {patientsQuery.data?.map((patient: Patient) => (
+                <PatientCard key={patient.ID} patient={patient} />
               ))}
             </div>
           </div>

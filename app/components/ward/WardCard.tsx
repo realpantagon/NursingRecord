@@ -3,11 +3,11 @@ import { Ward } from "@/types/ward";
 import Link from "next/link";
 import React, { useContext } from "react";
 
-export default function WardCard(props: Ward) {
+const WardCard: React.FC<{ ward: Ward }> = ({ ward }) => {
   const { setWardId } = useContext(WardIdContext);
 
   const handleClick = () => {
-    setWardId(props.ID);
+    setWardId(ward.ID);
   };
 
   return (
@@ -21,9 +21,11 @@ export default function WardCard(props: Ward) {
       >
         <div className="bg-blue-600 w-full h-40 rounded-t-lg"></div>
         <div className="mx-8 py-3">
-          <div className="">ชื่อ: {props.group} </div>
+          <div className="">ชื่อ: {ward.group} </div>
         </div>
       </Link>
     </div>
   );
-}
+};
+
+export default WardCard;

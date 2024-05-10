@@ -1,15 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
 import Link from "next/link";
-import { Patient } from "@/query/patients/type";
+import { Patient } from "@/types/searchPatient";
+import { PatientIdContext } from "@/providers/ContextProvider";
 
-interface PatientCardProps {
-  patient: Patient;
-}
+const PatientCard: React.FC<{ patient: Patient }> = ({ patient }) => {
+  const { setPatientId } = useContext(PatientIdContext);
 
-const PatientCard: React.FC<PatientCardProps> = ({ patient }) => {
+  const handleClick = () => {
+    setPatientId(patient.ID);
+  };
+
   return (
-    <div className="rounded-md bg-white h-full hover:bg-gray-300 hover:shadow-lg shadow-md">
-      <Link href="../record" className="no-underline text-black">
+    <div
+      className="rounded-md bg-white h-full hover:bg-gray-300 hover:shadow-lg shadow-md"
+      onClick={handleClick}
+    >
+      <Link href="/record" className="no-underline text-black">
         <div className="bg-blue-600 w-full h-6 rounded-t-lg"></div>
         <div className="mx-8 py-4">
           <div className="">ชื่อ: {patient.first_name}</div>
