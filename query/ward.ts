@@ -6,8 +6,8 @@ import { UpsertWard } from "@/types/ward";
 export const useQueryWards = () => {
   const query = useQuery({
     queryKey: ["wards"],
-    queryFn: () =>
-      axiosCustom
+    queryFn: async () =>
+      await axiosCustom
         .get(PROTECTED_API.GET_WARDS)
         .then((response) => response.data.data),
   });

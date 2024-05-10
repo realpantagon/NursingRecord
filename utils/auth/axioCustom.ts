@@ -1,9 +1,10 @@
 "use client";
 import axios, { AxiosInstance, AxiosRequestConfig } from "axios";
+import { useRouter } from "next/navigation";
 
-const baseAPI = process.env.BACKEND_PROXY_URL;
+const baseURL = process.env.BACKEND_PROXY_URL;
 const axiosCustom: AxiosInstance = axios.create({
-  baseURL: baseAPI,
+  baseURL: baseURL,
   headers: {
     "Content-Type": "application/json",
   },
@@ -13,9 +14,10 @@ const axiosCustom: AxiosInstance = axios.create({
 axiosCustom.interceptors.response.use(
   (res) => res,
   async (err) => {
+    const router = useRouter();
     const status = err?.response?.status || null;
     if (status === 401) {
-      window.location.href = "/";
+      router.push("/");
     }
     return Promise.reject(err);
   }
