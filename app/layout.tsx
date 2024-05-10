@@ -1,6 +1,8 @@
-import { Providers } from "@/providers/Providers";
 import React from "react";
 import "@/styles/globals.css";
+import { TanstackProvider } from "@/providers/TanstackProvider";
+import { ToastProvider } from "@/providers/Providers";
+import { ContextProvider } from "@/providers/ContextProvider";
 
 export const metadata = {
   title: "Nursing Record",
@@ -15,9 +17,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Providers>
-          <div>{children}</div>
-        </Providers>
+        <TanstackProvider>
+          <ToastProvider>
+            <ContextProvider>
+              <div>{children}</div>
+            </ContextProvider>
+          </ToastProvider>
+        </TanstackProvider>
       </body>
     </html>
   );

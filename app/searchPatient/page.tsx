@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useContext } from "react";
 
 import Appbar from "../components/Appbar";
 import Searchbar from "../components/Searchbar";
@@ -7,8 +7,10 @@ import PatientCard from "../components/patient/PatientCard";
 import { useQuerySearchPatients } from "@/query/searchpatient";
 import { SearchPatientOption } from "@/types/search_patient_opt";
 import { Patient, SearchPatient } from "@/types/searchPatient";
+import { WardIdContext } from "@/providers/ContextProvider";
 
 export default function Search() {
+  const { wardId } = useContext(WardIdContext);
   const patientsQuery = useQuerySearchPatients();
 
   const handleSearch = async (type: SearchPatientOption, keyword: string) => {
