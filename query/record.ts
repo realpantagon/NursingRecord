@@ -15,7 +15,7 @@ export const useQueryRecord = (id: number) => {
   return query;
 };
 
-export const useQueryRecordsByPatientId = (patientId: number) => {
+export const useQueryRecordsByPatientId = (patientId: string) => {
   const query = useQuery({
     queryKey: ["records"],
     queryFn: () =>
@@ -23,7 +23,7 @@ export const useQueryRecordsByPatientId = (patientId: number) => {
         .get(
           PROTECTED_API.GET_RECORDS_BY_PATIENT.replace(
             "{patient_id}",
-            patientId.toString()
+            patientId
           )
         )
         .then((response) => response.data.data),

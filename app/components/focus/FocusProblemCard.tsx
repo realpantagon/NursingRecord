@@ -2,10 +2,13 @@ import React from "react";
 import Link from "next/link";
 import { Note } from "@/types/note";
 import { formatDate } from "@/utils/formatDate";
+import { useParams } from "next/navigation";
 
 const FocusProblemCard: React.FC<{ focusProblem: Note }> = ({
   focusProblem,
 }) => {
+  const params = useParams();
+  const { ward_id, patient_id } = params;
   const updateAt = focusProblem.update_at;
   const createAt = focusProblem.create_at;
   const lastRecordDate =
@@ -17,7 +20,7 @@ const FocusProblemCard: React.FC<{ focusProblem: Note }> = ({
     <div>
       <div className="rounded-md bg-stone-100  hover:bg-gray-300 hover:shadow-lg my-2 shadow-md relative">
         <Link
-          href="/record/focusProblem/form"
+          href={`/ward/${ward_id}/patient/${patient_id}/focusProblem/${focusProblem.ID}`}
           className="no-underline text-black"
         >
           <div className="bg-purple-600 w-full h-7 rounded-t-lg flex flex-row-reverse">

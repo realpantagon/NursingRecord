@@ -1,11 +1,10 @@
-import React, { useContext } from "react";
+import React from "react";
 import Link from "next/link";
 import { Patient } from "@/types/searchPatient";
-import { PatientIdContext } from "@/providers/ContextProvider";
 import { formatDate } from "@/utils/formatDate";
+import { useParams } from "next/navigation";
 
 const PatientCard: React.FC<{ patient: Patient }> = ({ patient }) => {
-  const { setPatientId } = useContext(PatientIdContext);
   const updateAt = patient.update_at;
   const createAt = patient.create_at;
   const lastRecordDate =
@@ -13,16 +12,14 @@ const PatientCard: React.FC<{ patient: Patient }> = ({ patient }) => {
       ? formatDate(createAt)
       : formatDate(updateAt);
 
-  const handleClick = () => {
-    setPatientId(patient.ID);
-  };
-
+  const params = useParams();
+  const { ward_id } = params;
   return (
-    <div
-      className="rounded-md bg-white h-full hover:bg-gray-300 hover:shadow-lg shadow-md"
-      onClick={handleClick}
-    >
-      <Link href="/record" className="no-underline text-black">
+    <div className="rounded-md bg-white h-full hover:bg-gray-300 hover:shadow-lg shadow-md">
+      <Link
+        href={`/ward/${ward_id}/patient/${patient.ID}`}
+        className="no-underline text-black"
+      >
         <div className="bg-blue-600 w-full h-6 rounded-t-lg"></div>
         <div className="mx-8 py-4">
           <div className="">ชื่อ: {patient.first_name}</div>

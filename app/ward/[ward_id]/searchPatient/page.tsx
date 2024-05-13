@@ -1,9 +1,9 @@
 "use client";
 import React from "react";
 
-import Appbar from "../components/Appbar";
-import Searchbar from "../components/Searchbar";
-import PatientCard from "../components/patient/PatientCard";
+import Appbar from "../../../components/Appbar";
+import Searchbar from "../../../components/Searchbar";
+import PatientCard from "../../../components/patient/PatientCard";
 import { useQuerySearchPatients } from "@/query/searchpatient";
 import { SearchPatientOption } from "@/types/search_patient_opt";
 import { Patient, SearchPatient } from "@/types/searchPatient";

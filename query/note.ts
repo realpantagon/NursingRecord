@@ -15,16 +15,13 @@ export const useQueryNote = (id: number) => {
   return query;
 };
 
-export const useQueryNotesByPatientId = (patientId: number) => {
+export const useQueryNotesByPatientId = (patientId: string) => {
   const query = useQuery({
     queryKey: ["notes"],
     queryFn: () =>
       axiosCustom
         .get(
-          PROTECTED_API.GET_NOTES_BY_PATIENT.replace(
-            "{patient_id}",
-            patientId.toString()
-          )
+          PROTECTED_API.GET_NOTES_BY_PATIENT.replace("{patient_id}", patientId)
         )
         .then((response) => response.data.data),
   });

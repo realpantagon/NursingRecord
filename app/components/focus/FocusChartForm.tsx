@@ -1,11 +1,8 @@
 "use client";
-import { useState } from "react";
 import Appbar from "@/app/components/Appbar";
 import PatientData from "@/app/components/patient/PatientData";
 
-export default function Form() {
-  const [visible, setVisible] = useState<boolean>(false);
-
+export default function FocusChartForm() {
   return (
     <div className="bg-stone-100 min-h-screen w-screen">
       <Appbar />

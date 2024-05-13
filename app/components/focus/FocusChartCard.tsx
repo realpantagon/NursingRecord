@@ -2,8 +2,11 @@ import React from "react";
 import Link from "next/link";
 import { Record } from "@/types/focusChart";
 import { formatDate } from "@/utils/formatDate";
+import { useParams } from "next/navigation";
 
 const FocusChartCard: React.FC<{ focusChart: Record }> = ({ focusChart }) => {
+  const params = useParams();
+  const { ward_id, patient_id } = params;
   const updateAt = focusChart.update_at;
   const createAt = focusChart.create_at;
   const lastRecordDate =
@@ -15,7 +18,7 @@ const FocusChartCard: React.FC<{ focusChart: Record }> = ({ focusChart }) => {
     <div>
       <div className="rounded-md bg-stone-100  hover:bg-gray-300 hover:shadow-lg my-2 shadow-md relative">
         <Link
-          href="/record/focusChart/form"
+          href={`/ward/${ward_id}/patient/${patient_id}/focusChart/${focusChart.ID}`}
           className="no-underline text-black"
         >
           <div className="bg-blue-600 w-full h-7 rounded-t-lg flex flex-row-reverse">
