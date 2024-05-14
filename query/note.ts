@@ -8,7 +8,7 @@ export const useQueryNote = (id: number) => {
     queryKey: ["note"],
     queryFn: () =>
       axiosCustom
-        .get(PROTECTED_API.GET_NOTES.replace("id", id.toString()))
+        .get(PROTECTED_API.GET_NOTES.replace("{id}", id.toString()))
         .then((response) => response.data.data),
   });
 

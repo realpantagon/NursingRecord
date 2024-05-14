@@ -7,8 +7,12 @@ import Appbar from "@/app/components/Appbar";
 import PatientData from "@/app/components/patient/PatientData";
 import ConfirmFocus from "@/app/components/focus/ConfirmFocus";
 import { useParams, useRouter } from "next/navigation";
-import { useMutationCreateNote, useMutationUpdateNote } from "@/query/note";
-import { UpsertNote } from "@/types/note";
+import {
+  useMutationCreateNote,
+  useMutationUpdateNote,
+  useQueryNote,
+} from "@/query/note";
+import { Note, UpsertNote } from "@/types/note";
 
 export default function FocusProblemForm() {
   const router = useRouter();
@@ -17,18 +21,13 @@ export default function FocusProblemForm() {
   const patientId = +patient_id;
   const wardId = +ward_id;
   const focusProblemId = +focus_problem_id;
-
-  const [support, setSupport] = useState("");
-  const [activities, setActivities] = useState("");
-  const [evaluate, setEvaluate] = useState("");
-
-  const supportTextareaRef = useRef<HTMLTextAreaElement>(null);
-  const activitiesTextareaRef = useRef<HTMLTextAreaElement>(null);
-  const evaluateTextareaRef = useRef<HTMLTextAreaElement>(null);
-
   const updateNoteMutation = useMutationUpdateNote();
   const createNoteMutation = useMutationCreateNote();
+  const focusProblemQuery = focusProblemId
+    ? useQueryNote(focusProblemId)
+    : null;
   const fieldCategoryQuery = useQueryGetFieldCategories();
+  const focusProblem: Note = focusProblemQuery?.data;
   const fieldCategory: FieldCategory[] = fieldCategoryQuery.data;
   const ACategory = fieldCategory?.find(
     (category) => category.field_type === "A_TEXT"
@@ -39,6 +38,15 @@ export default function FocusProblemForm() {
   const SCategory = fieldCategory?.find(
     (category) => category.field_type === "S_TEXT"
   );
+
+  const [support, setSupport] = useState("");
+  const [activities, setActivities] = useState("");
+  const [evaluate, setEvaluate] = useState("");
+
+  ///////////////////////TEXT_AREA_SECTION///////////////////////////
+  const supportTextareaRef = useRef<HTMLTextAreaElement>(null);
+  const activitiesTextareaRef = useRef<HTMLTextAreaElement>(null);
+  const evaluateTextareaRef = useRef<HTMLTextAreaElement>(null);
 
   const supportChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
     setSupport(e.target.value);
@@ -70,6 +78,21 @@ export default function FocusProblemForm() {
   useEffect(() => {
     handleTextareaResize(evaluateTextareaRef);
   }, [evaluate]);
+  ///////////////////////END_TEXT_AREA_SECTION///////////////////////////
+  useEffect(() => {
+    const activityField = focusProblem?.fields.find(
+      (field) => field.field_category_id === ACategory?.ID
+    );
+    const evaluateField = focusProblem?.fields.find(
+      (field) => field.field_category_id === ECategory?.ID
+    );
+    const supportField = focusProblem?.fields.find(
+      (field) => field.field_category_id === SCategory?.ID
+    );
+    setActivities(activityField?.field_data ?? "");
+    setEvaluate(evaluateField?.field_data ?? "");
+    setSupport(supportField?.field_data ?? "");
+  }, [focusProblem]);
 
   const submitFocusProblem = async () => {
     const noteBody: UpsertNote = {
@@ -106,6 +129,7 @@ export default function FocusProblemForm() {
           focusProblemId ? `focusProblem/${focusProblemId}` : ""
         }`
       );
+      clearfocusproblem();
     }
   };
 
@@ -115,7 +139,6 @@ export default function FocusProblemForm() {
     setEvaluate("");
   };
 
-  if (fieldCategoryQuery.isLoading) return;
   return (
     <div className="bg-stone-100 h-full">
       <Appbar />
