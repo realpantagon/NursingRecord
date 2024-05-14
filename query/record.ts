@@ -40,7 +40,7 @@ export const useMutationUpsertRecord = (body: UpsertRecord) => {
         .put(PROTECTED_API.UPSERT_RECORD, body)
         .then((response) => response.data.data),
     onSuccess: async () =>
-      await queryClient.invalidateQueries({ queryKey: ["record"] }),
+      await queryClient.invalidateQueries({ queryKey: ["records"] }),
   });
 
   return mutation;
@@ -54,7 +54,7 @@ export const useMutationDeleteRecord = (id: number) => {
         .delete(PROTECTED_API.DELETE_RECORD.replace("id", id.toString()))
         .then((response) => response.data.data),
     onSuccess: async () =>
-      await queryClient.invalidateQueries({ queryKey: ["record"] }),
+      await queryClient.invalidateQueries({ queryKey: ["records"] }),
   });
 
   return mutation;

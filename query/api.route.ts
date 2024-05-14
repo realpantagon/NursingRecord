@@ -23,7 +23,8 @@ export enum PROTECTED_API {
   //Note
   GET_NOTES = "/api/v1/notes/{id}",
   GET_NOTES_BY_PATIENT = "/api/v1/notes/patient/{patient_id}",
-  UPSERT_NOTE = "/api/v1/notes",
+  CREATE_NOTE = "/api/v1/notes",
+  UPDATE_NOTE = "/api/v1/notes",
   DELETE_NOTE = "/api/v1/notes/{id}",
 
   //Record

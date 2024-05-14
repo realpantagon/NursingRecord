@@ -1,35 +1,41 @@
 "use client";
 import React, { ChangeEvent, useEffect, useRef, useState } from "react";
 import { Accordion, AccordionTab } from "primereact/accordion";
-import { useMutationUpsertNote } from "@/query/note";
-import { UpsertNote } from "@/types/note";
-
 import { useQueryGetFieldCategories } from "@/query/field_category";
 import { FieldCategory } from "@/types/field_category";
 import Appbar from "@/app/components/Appbar";
 import PatientData from "@/app/components/patient/PatientData";
 import ConfirmFocus from "@/app/components/focus/ConfirmFocus";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
+import { useMutationCreateNote, useMutationUpdateNote } from "@/query/note";
+import { UpsertNote } from "@/types/note";
 
 export default function FocusProblemForm() {
+  const router = useRouter();
   const params = useParams();
-  const { ward_id, patient_id } = params;
+  const { patient_id, ward_id, focus_problem_id } = params;
+  const patientId = +patient_id;
+  const wardId = +ward_id;
+  const focusProblemId = +focus_problem_id;
+
   const [support, setSupport] = useState("");
   const [activities, setActivities] = useState("");
   const [evaluate, setEvaluate] = useState("");
+
   const supportTextareaRef = useRef<HTMLTextAreaElement>(null);
   const activitiesTextareaRef = useRef<HTMLTextAreaElement>(null);
   const evaluateTextareaRef = useRef<HTMLTextAreaElement>(null);
-  const upsertNoteMutation = useMutationUpsertNote();
 
+  const updateNoteMutation = useMutationUpdateNote();
+  const createNoteMutation = useMutationCreateNote();
   const fieldCategoryQuery = useQueryGetFieldCategories();
   const fieldCategory: FieldCategory[] = fieldCategoryQuery.data;
   const ACategory = fieldCategory?.find(
     (category) => category.field_type === "A_TEXT"
   );
-  const ECategory = fieldCategory?.find((category) => {
-    category.field_type === "E_TEXT";
-  });
+  const ECategory = fieldCategory?.find(
+    (category) => category.field_type === "E_TEXT"
+  );
   const SCategory = fieldCategory?.find(
     (category) => category.field_type === "S_TEXT"
   );
@@ -65,11 +71,11 @@ export default function FocusProblemForm() {
     handleTextareaResize(evaluateTextareaRef);
   }, [evaluate]);
 
-  const submitFocusProblem = () => {
-    const upsertNoteBody: UpsertNote = {
-      ward_id: parseInt(ward_id as string),
+  const submitFocusProblem = async () => {
+    const noteBody: UpsertNote = {
+      ward_id: wardId,
       fields: [],
-      patient_id: parseInt(patient_id as string),
+      patient_id: patientId,
     };
 
     const categoriesData = [
@@ -77,16 +83,30 @@ export default function FocusProblemForm() {
       { category: ECategory, data: evaluate },
       { category: SCategory, data: support },
     ];
+
     categoriesData.forEach(({ category, data }) => {
-      if (data && category) {
-        upsertNoteBody.fields.push({
+      if (category && data) {
+        noteBody.fields.push({
           field_category_id: category.ID,
           field_data: data,
         });
       }
     });
 
-    upsertNoteMutation.mutateAsync(upsertNoteBody);
+    const response = focusProblemId
+      ? await updateNoteMutation.mutateAsync({
+          ...noteBody,
+          ID: focusProblemId,
+        })
+      : await createNoteMutation.mutateAsync(noteBody);
+
+    if (response) {
+      router.push(
+        `/ward/${wardId}/patient/${patientId}/${
+          focusProblemId ? `focusProblem/${focusProblemId}` : ""
+        }`
+      );
+    }
   };
 
   const clearfocusproblem = () => {

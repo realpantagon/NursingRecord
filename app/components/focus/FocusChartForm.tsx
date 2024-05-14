@@ -1,8 +1,11 @@
 "use client";
 import Appbar from "@/app/components/Appbar";
 import PatientData from "@/app/components/patient/PatientData";
+import { useParams } from "next/navigation";
 
 export default function FocusChartForm() {
+  const params = useParams();
+  const { patient_id, ward_id, focus_chart_id } = params;
   return (
     <div className="bg-stone-100 min-h-screen w-screen">
       <Appbar />

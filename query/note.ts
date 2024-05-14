@@ -29,12 +29,26 @@ export const useQueryNotesByPatientId = (patientId: string) => {
   return query;
 };
 
-export const useMutationUpsertNote = () => {
+export const useMutationCreateNote = () => {
   const queryClient = useQueryClient();
   const mutation = useMutation({
     mutationFn: (body: UpsertNote) =>
       axiosCustom
-        .put(PROTECTED_API.UPSERT_NOTE, body)
+        .put(PROTECTED_API.CREATE_NOTE, body)
+        .then((response) => response.data.data),
+    onSuccess: async () =>
+      await queryClient.invalidateQueries({ queryKey: ["notes"] }),
+  });
+
+  return mutation;
+};
+
+export const useMutationUpdateNote = () => {
+  const queryClient = useQueryClient();
+  const mutation = useMutation({
+    mutationFn: (body: UpsertNote) =>
+      axiosCustom
+        .put(PROTECTED_API.UPDATE_NOTE, body)
         .then((response) => response.data.data),
     onSuccess: async () =>
       await queryClient.invalidateQueries({ queryKey: ["note"] }),
@@ -51,7 +65,7 @@ export const useMutationDeleteNote = (id: number) => {
         .delete(PROTECTED_API.DELETE_NOTE.replace("id", id.toString()))
         .then((response) => response.data.data),
     onSuccess: async () =>
-      await queryClient.invalidateQueries({ queryKey: ["note"] }),
+      await queryClient.invalidateQueries({ queryKey: ["notes"] }),
   });
 
   return mutation;
