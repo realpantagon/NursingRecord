@@ -1,13 +1,13 @@
 import { z } from "zod";
 
 export const WardSchema = z.object({
-  ID: z.number(),
-  group: z.string(),
+	ID: z.number(),
+	group: z.string(),
 });
 
 export const UpsertWardSchema = z.object({
-  ID: z.string().optional(),
-  group: z.string(),
+	ID: z.number().optional(),
+	group: z.string(),
 });
 
 export type Ward = z.infer<typeof WardSchema>;
