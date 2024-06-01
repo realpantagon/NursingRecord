@@ -9,9 +9,8 @@ import WardCard from "../components/ward/WardCard";
 
 export default function Home() {
   const [isCreateWardDialogOpen, setCreateWardDialogOpen] = useState(false);
-
   const wardsQuery = useQueryWards();
-  const wards: Ward[] = wardsQuery.data;
+  const wards: Ward[] = wardsQuery.data || [];
 
   const openCreateWardDialog = () => {
     setCreateWardDialogOpen(true);

@@ -35,7 +35,8 @@ export enum PROTECTED_API {
 
   //Ward
   GET_WARDS = "/api/v1/wards",
-  UPSERT_WARD = "/api/v1/wards",
+  CREATE_WARD = "/api/v1/wards",
+  UPDATE_WARD = "/api/v1/wards",
   DELETE_WARD = "/api/v1/wards/{id}",
 
   //Ndx

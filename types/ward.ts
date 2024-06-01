@@ -3,12 +3,14 @@ import { z } from "zod";
 export const WardSchema = z.object({
 	ID: z.number(),
 	group: z.string(),
+	is_active: z.boolean(),
 });
 
-export const UpsertWardSchema = z.object({
-	ID: z.number().optional(),
+export const CreateWardSchema = z.object({
 	group: z.string(),
 });
+;
 
 export type Ward = z.infer<typeof WardSchema>;
-export type UpsertWard = z.infer<typeof UpsertWardSchema>;
+export type CreateWardBody = z.infer<typeof CreateWardSchema>;
+export type UpdateWardBody = z.infer<typeof WardSchema>;

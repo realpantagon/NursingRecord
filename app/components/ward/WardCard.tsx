@@ -19,8 +19,6 @@ const WardCard: React.FC<{ ward: Ward }> = ({ ward }) => {
 		{ label: "Option 2", icon: "pi pi-fw pi-trash" },
 	];
 
-	const [wardName, setWardName] = useState(ward.group);
-
 	return (
 		<div className="rounded-md bg-white h-full hover:bg-gray-300 hover:shadow-lg shadow-md relative">
 			<Menu model={itemList} popup ref={menu} id="ward_menu" />
@@ -41,8 +39,7 @@ const WardCard: React.FC<{ ward: Ward }> = ({ ward }) => {
 			<EditWard
 				visible={editVisible}
 				onHide={() => setEditVisible(false)}
-				wardName={wardName}
-				wardID={ward.ID}
+				ward={ward}
 			/>
 		</div>
 	);

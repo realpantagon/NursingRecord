@@ -3,6 +3,7 @@ import { toastRef } from "@/app/components/toast/Toast";
 import { PROTECTED_API, UNPROTECTED_API } from "./api.route";
 import { Login } from "@/types/auth";
 import axiosCustom from "@/utils/axioCustom";
+import { createToast } from "@/utils/toast";
 
 export const useQueryCheckAuth = () => {
 	const query = useQuery({
@@ -17,24 +18,9 @@ export const useQueryCheckAuth = () => {
 };
 
 export const useMutationLogin = () => {
-	const showSuccess = () => {
-		toastRef.current?.show({
-			severity: "success",
-			summary: "Success",
-			detail: "Login Successful",
-			life: 3000,
-		});
-	};
-
-	const showError = () => {
-		toastRef.current?.show({
-			severity: "error",
-			summary: "Error",
-			detail: "Login Fail",
-			life: 3000,
-		});
-	};
-
+	const showSuccess = () => createToast("success", "Success", "เข้าสู้ระบบสำเร็จ");
+	const showError = () => createToast("error", "Error", "เกิดข้อผิดพลาดในการเข้าสู่ระบบ");
+	
 	const mutation = useMutation({
 		mutationFn: async (body: Login) => {
 			const response = await axiosCustom.post(UNPROTECTED_API.LOGIN, body);
@@ -50,23 +36,8 @@ export const useMutationLogin = () => {
 };
 
 export const useMutationLogout = () => {
-	const showSuccess = () => {
-		toastRef.current?.show({
-			severity: "success",
-			summary: "Success",
-			detail: "Logout Successful",
-			life: 3000,
-		});
-	};
-
-	const showError = () => {
-		toastRef.current?.show({
-			severity: "error",
-			summary: "Error",
-			detail: "Logout Fail",
-			life: 3000,
-		});
-	};
+	const showSuccess = () => createToast("success", "Success", "ออกจากระบบสำเร็จ");
+	const showError = () => createToast("error", "Error", "เกิดข้อผิดพลาดในการออกจากระบบ");
 
 	const mutation = useMutation({
 		mutationFn: async () => {

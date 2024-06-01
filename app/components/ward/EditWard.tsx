@@ -2,28 +2,25 @@ import { Dialog } from "primereact/dialog";
 import { InputText } from "primereact/inputtext";
 import React, { useState, useEffect } from "react";
 import { Button } from "primereact/button";
-import { useMutationUpsertWard } from "@/query/ward";
+import { useMutationUpdateWard } from "@/query/ward";
+import { UpdateWardBody } from "@/types/ward";
 
 type Props = {
 	visible: boolean;
 	onHide: () => void;
-	wardName: string;
-	wardID: number;
+	ward: UpdateWardBody
 };
 
-export default function EditWard({ visible, onHide, wardName, wardID }: Props) {
-	const [ward, setWardName] = useState(wardName);
-
-	const mutateUpsertWard = useMutationUpsertWard();
-	// Update the ward state whenever the wardName prop changes
-	useEffect(() => {
-		setWardName(wardName);
-	}, [wardName]);
-
-	const handleConfirm = () => {
-		mutateUpsertWard.mutate({ ID: wardID, group: ward }); // Use the returned mutation function
+export default function EditWard({ visible, onHide, ward }: Props) {
+	const [wardName, setWardName] = useState(ward.group);
+	const mutateUpdateWard = useMutationUpdateWard();
+	
+	const handleConfirm = async() => {
+		const { group, ...other } = ward;
+		await mutateUpdateWard.mutateAsync({ group:wardName, ...other });
 		onHide();
 	};
+
 	return (
 		<Dialog
 			header="แก้ไขชื่อกลุ่มโรค"
@@ -34,7 +31,7 @@ export default function EditWard({ visible, onHide, wardName, wardID }: Props) {
 		>
 			<InputText
 				placeholder="ชื่อกลุ่มโรค"
-				value={ward}
+				value={wardName}
 				onChange={(e) => setWardName(e.target.value)}
 			/>
 			<Button label="ตกลง" onClick={handleConfirm} />

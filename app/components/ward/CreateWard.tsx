@@ -8,8 +8,8 @@ import {
 	ColorPickerHSBType,
 } from "primereact/colorpicker";
 import { Button } from "primereact/button";
-import { useMutationUpsertWard } from "@/query/ward";
-
+import { useMutationCreateWard } from "@/query/ward";
+import { CreateWardBody} from "@/types/ward";
 interface CreateWardProps {
 	visible: boolean;
 	onClose: () => void;
@@ -18,7 +18,7 @@ interface CreateWardProps {
 const CreateWard: React.FC<CreateWardProps> = ({ visible, onClose }) => {
 	const [color, setColor] = useState<string>("#000000");
 	const [wardName, setWardName] = useState<string>("");
-	const mutateUpsertWard = useMutationUpsertWard(); // Call the hook here
+	const mutateUpsertWard = useMutationCreateWard(); 
 
 	useEffect(() => {
 		if (!visible) {
@@ -40,7 +40,7 @@ const CreateWard: React.FC<CreateWardProps> = ({ visible, onClose }) => {
 	};
 
 	const handleConfirm = () => {
-		mutateUpsertWard.mutate({ group: wardName }); // Use the returned mutation function
+		mutateUpsertWard.mutateAsync({ group: wardName } as CreateWardBody); 
 		onClose();
 	};
 
