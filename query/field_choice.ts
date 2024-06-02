@@ -1,4 +1,4 @@
-import { UpsertFieldChoice } from "@/types/field_choice";
+import { CreateFieldChoice, UpdateFieldChoice} from "@/types/field_choice";
 import axiosCustom from "@/utils/axioCustom";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { PROTECTED_API } from "./api.route";
@@ -15,12 +15,26 @@ export const useQueryGetFieldChoicesByNdx = (ndxId: string) => {
   return query;
 };
 
-export const useMutationUpsertFieldChoice = (body: UpsertFieldChoice) => {
+export const useMutationCreateFieldChoice = () => {
   const queryClient = useQueryClient();
-  const mutation = useMutation<UpsertFieldChoice>({
-    mutationFn: () =>
+  const mutation = useMutation({
+    mutationFn: (body: CreateFieldChoice) =>
       axiosCustom
-        .put(PROTECTED_API.UPSERT_FIELD_CHOICE, body)
+        .put(PROTECTED_API.CREATE_FIELD_CHOICE, body)
+        .then((response) => response.data.data),
+    onSuccess: async () =>
+      await queryClient.invalidateQueries({ queryKey: ["fieldChoices"] }),
+  });
+
+  return mutation;
+};
+
+export const useMutationUpdateFieldChoice = () => {
+  const queryClient = useQueryClient();
+  const mutation = useMutation({
+    mutationFn: (body: UpdateFieldChoice) =>
+      axiosCustom
+        .put(PROTECTED_API.UPDATE_FIELD_CHOICE, body)
         .then((response) => response.data.data),
     onSuccess: async () =>
       await queryClient.invalidateQueries({ queryKey: ["fieldChoices"] }),

@@ -14,8 +14,15 @@ export const FieldChoiceSchema = z.object({
   field_category: FieldCategorySchema,
 });
 
-export const UpsertFieldChoiceSchema = z.object({
-  ID: z.string().optional(),
+export const CreateFieldChoiceSchema = z.object({
+  field_choice_data: z.string(),
+  ward_id: z.string(),
+  ndx_id: z.string(),
+  field_category_id: z.string(),
+});
+
+export const UpdateFieldChoiceSchema = z.object({
+  ID: z.string(),
   field_choice_data: z.string(),
   ward_id: z.string(),
   ndx_id: z.string(),
@@ -23,4 +30,5 @@ export const UpsertFieldChoiceSchema = z.object({
 });
 
 export type FieldChoice = z.infer<typeof FieldChoiceSchema>;
-export type UpsertFieldChoice = z.infer<typeof UpsertFieldChoiceSchema>;
+export type CreateFieldChoice = z.infer<typeof CreateFieldChoiceSchema>;
+export type UpdateFieldChoice = z.infer<typeof UpdateFieldChoiceSchema>;

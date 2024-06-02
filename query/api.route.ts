@@ -12,12 +12,14 @@ export enum PROTECTED_API {
 
   //FieldCategory
   GET_FIELD_CATEGORIES = "/api/v1/fieldCategories",
-  UPSERT_FIELD_CATEGORY = "/api/v1/fieldCategories",
+  CREATE_FIELD_CATEGORY = "/api/v1/fieldCategories",
+  UPDATE_FIELD_CATEGORY = "/api/v1/fieldCategories",
   DELETE_FIELD_CATEGORY = "/api/v1/fieldCategories/{id}",
 
   //FieldChoice
   GET_FIELD_CHOICES_BY_NDX = "/api/v1/fieldCategories/ndx/{ndx_id}",
-  UPSERT_FIELD_CHOICE = "/api/v1/fieldCategories",
+  CREATE_FIELD_CHOICE = "/api/v1/fieldCategories",
+  UPDATE_FIELD_CHOICE = "/api/v1/fieldCategories",
   DELETE_FIELD_CHOICE = "/api/v1/fieldCategories/{id}",
 
   //Note

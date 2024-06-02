@@ -6,11 +6,10 @@ export const FieldCategorySchema = z.object({
   isActive: z.boolean(),
 });
 
-export const UpsertFieldCategorySchema = z.object({
-  ID: z.number().optional(),
+export const CreateFieldCategorySchema = z.object({
   field_type: z.string(),
-  is_active: z.boolean(),
 });
 
 export type FieldCategory = z.infer<typeof FieldCategorySchema>;
-export type UpsertFieldCategory = z.infer<typeof UpsertFieldCategorySchema>;
+export type CreateFieldCategory = z.infer<typeof CreateFieldCategorySchema>;
+export type UpdateFieldCategory = z.infer<typeof FieldCategorySchema>;
